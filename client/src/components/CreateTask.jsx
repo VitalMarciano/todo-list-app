@@ -1,22 +1,25 @@
 import React, { useState } from "react";
-import toast from "react-hot-toast";
+//import toast from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
 import TaskForm from "./taskForm";
+import Context from "../utils/context"
 
-const CreateTask = ({ tasks, setTasks }) => {
+const CreateTask = () => {
   const [showModal, setShowModal] = useState(false); // Initially hide the modal
+  const { state, dispatch } = React.useContext(Context)
 
   const handleSubmit = (task) => {
     const taskId = uuidv4(); // Generate a unique ID for the task
     const newTask = { ...task, id: taskId }; // Add the ID to the task object
 
-    setTasks((prev) => {
-      const newList = prev ? [...prev, newTask] : [newTask];
-      localStorage.setItem("tasks", JSON.stringify(newList));
-      return newList;
-    });
+    const prev=state.tasks;
+    const newList = prev ? [...prev, newTask] : [newTask];
+    localStorage.setItem("tasks", JSON.stringify(newList));
+   
+    dispatch({ type: 'SET_TASKS', param: newList });
+    console.log(state.tasks);
 
-    toast.success("Task Created");
+    //toast.success("Task Created");
 
     setShowModal(false); // Hide the modal after submitting
   };

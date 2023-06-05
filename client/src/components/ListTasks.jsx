@@ -1,20 +1,21 @@
-import { useEffect, useState } from "react";
-import Section from "./Section";
-
-const ListTasks = ({ tasks, setTasks }) => {
+import React,{ useEffect, useState } from "react";
+import Section from "./section";
+import Context from "../utils/context";
+const ListTasks = () => {
   const [todos, setTodos] = useState([]);
   const [inProgress, setInProgress] = useState([]);
   const [closed, setClosed] = useState([]);
+  const { state, dispatch } = React.useContext(Context)
 
   useEffect(() => {
-    const fTodos = tasks.filter((task) => task.status === "todo");
-    const fInProgress = tasks.filter((task) => task.status === "inprogress");
-    const fClosed = tasks.filter((task) => task.status === "closed");
+    const fTodos = (state.tasks).filter((task) => task.status === "todo");
+    const fInProgress = state.tasks.filter((task) => task.status === "inprogress");
+    const fClosed = state.tasks.filter((task) => task.status === "closed");
 
     setTodos(fTodos);
     setInProgress(fInProgress);
     setClosed(fClosed);
-  }, [tasks]);
+  }, [state.tasks]);
 
   const statuses = ["todo", "inprogress", "closed"];
 
@@ -24,7 +25,6 @@ const ListTasks = ({ tasks, setTasks }) => {
         <Section
           key={index}
           status={status}
-          setTasks={setTasks}
           todos={todos}
           inProgress={inProgress}
           closed={closed}

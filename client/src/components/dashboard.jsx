@@ -1,24 +1,14 @@
 import React, { useState } from "react";
-import CreateTask from "./CreateTask";
-import ListTasks from "./ListTasks";
+import CreateTask from "./createTask";
+import ListTasks from "./listTasks";
+import Context from "../utils/context"
 
-const Dashboard = ({ user, handleLogout, tasks, setTasks }) => {
-  const [showCreateTask, setShowCreateTask] = useState(false);
-
-  const toggleCreateTask = () => {
-    setShowCreateTask(!showCreateTask);
-  };
+const Dashboard = () => {
 
   return (
     <>
-      <button
-        className="bg-gray-600 text-white px-4 py-2 rounded-md"
-        onClick={handleLogout}
-      >
-        Logout
-      </button>
-      <CreateTask tasks={tasks} setTasks={setTasks} />
-      <ListTasks tasks={tasks} setTasks={setTasks} />
+      <CreateTask/>
+      <ListTasks/>
 
     </>
   );

@@ -1,11 +1,12 @@
 import { useDrag } from "react-dnd";
-import { useState } from "react";
-import toast from "react-hot-toast";
+import React,{ useState } from "react";
+//import toast from "react-hot-toast";
 import TaskForm from "./taskForm";
+import Context from "../utils/context";
 
-const Task = ({ task, tasks, setTasks }) => {
- 
+const Task = ({ task }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const { state, dispatch } = React.useContext(Context);
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "task",
     item: { id: task.id },
@@ -15,14 +16,13 @@ const Task = ({ task, tasks, setTasks }) => {
   }));
 
   const handleRemove = (id) => {
-    setTasks((prevTasks) => {
-      const updatedTasks = prevTasks.filter((t) => t.id !== id);
-      localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-      toast("Task Removed");
-      return updatedTasks;
-    });
+    const prevTasks = state.tasks;
+    const updatedTasks = prevTasks.filter((t) => t.id !== id);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+    //toast("Task Removed");
+    dispatch({ type: "SET_TASKS", param: updatedTasks });
   };
-  
+
   const toggleEdit = () => {
     setIsEditing((prev) => !prev); // Toggle the visibility of the modal
   };
@@ -31,14 +31,13 @@ const Task = ({ task, tasks, setTasks }) => {
   };
 
   const handleSave = (editedTask) => {
-    setTasks((prevTasks) => {
-      const updatedTasks = prevTasks.map((t) =>
-        t.id === task.id ? editedTask : t
-      );
-      localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-      toast("Task Updated");
-      return updatedTasks;
-    });
+    const prevTasks = state.tasks;
+    const updatedTasks = prevTasks.map((t) =>
+      t.id === task.id ? editedTask : t
+    );
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+    //toast("Task Updated");
+    dispatch({ type: "SET_TASKS", param: updatedTasks });
     setIsEditing(false);
   };
 
@@ -67,7 +66,8 @@ const Task = ({ task, tasks, setTasks }) => {
       {isEditing ? (
         <TaskForm
           initialTask={task}
-          handleSubmit={handleSave} onClose={toggleEdit}
+          handleSubmit={handleSave}
+          onClose={toggleEdit}
         />
       ) : (
         <>

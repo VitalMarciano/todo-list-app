@@ -23,7 +23,7 @@ const Navbar = () => {
       {!cookies.access_token ? (
         <button onClick={() => handleNavigate('/auth')}>Login/Register</button>
       ) : (
-        <button onClick={logout}>Logout</button>
+        <button className="bg-gray-600 text-white px-4 py-2 rounded-md" onClick={logout}>Logout</button>
       )}
     </div>
   );

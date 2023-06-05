@@ -1,10 +1,13 @@
 import { useDrop } from "react-dnd";
-import { useState } from "react";
+import React from "react";
 import Header from "./header";
-import Task from "./taskBox"
-import toast from "react-hot-toast";
+import Task from "./taskBox";
 
-const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
+//import toast from "react-hot-toast";
+import Context from "../utils/context";
+
+const Section = ({ status, todos, inProgress, closed }) => {
+  const { state, dispatch } = React.useContext(Context);
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "task",
     drop: (item) => addItemToSection(item.id),
@@ -29,17 +32,18 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
   }
 
   const addItemToSection = (id) => {
-    setTasks((prev) => {
-      const mTasks = prev.map((t) => {
-        if (t.id === id) {
-          return { ...t, status: status };
-        }
-        return t;
-      });
-      localStorage.setItem("tasks", JSON.stringify(mTasks));
-      toast("Task status changed");
-      return mTasks;
+    const prev = state.tasks;
+    console.log(prev);
+    const mTasks = prev.map((t) => {
+      if (t.id === id) {
+        return { ...t, status: status };
+      }
+      return t;
     });
+    console.log(mTasks);
+    localStorage.setItem("tasks", JSON.stringify(mTasks));
+    //toast("Task status changed");
+    dispatch({ type: "SET_TASKS", param: mTasks });
   };
 
   return (
@@ -50,7 +54,7 @@ const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {
       <Header text={text} bg={bg} count={tasksToMap.length} />
       {tasksToMap.length > 0 &&
         tasksToMap.map((task) => (
-          <Task key={task.id} task={task} tasks={tasks} setTasks={setTasks} />
+          <Task key={task.id} task={task} />
         ))}
     </div>
   );

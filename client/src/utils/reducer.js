@@ -1,13 +1,13 @@
 export const initState = {
     view: 'auth', // signin, home
     user: null,
-    tasks: null,
+    tasks: [],
     error: ''
 
     
 };
 
-export const reducer = (state = initState, action) => {
+export const reducer = (state , action) => {
     switch (action.type) {
         case 'SET_VIEW':
             return {
