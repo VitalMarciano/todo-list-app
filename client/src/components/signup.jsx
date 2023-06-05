@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
+import Context from "../utils/context"
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -12,8 +11,8 @@ const SignUp = () => {
   const [lastName, setLastName] = useState("");
   const [birthday, setBirthday] = useState("");
   const [showModal, setShowModal] = useState(false); // Initially hide the modal
+  const { state, dispatch } = React.useContext(Context)
 
-  const navigate = useNavigate();
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -38,7 +37,8 @@ const SignUp = () => {
         alert(response.data['message']);
       }
       else{
-        navigate("/login")
+
+        dispatch({ type: 'SET_VIEW', param: 'login' });
         alert("Registration completed! Now login.");
       }
     
@@ -47,7 +47,7 @@ const SignUp = () => {
     }
   };
   const onCancel= ()=>{
-    navigate("/login")
+    dispatch({ type: 'SET_VIEW', param: 'login' });
   }
 
   return (

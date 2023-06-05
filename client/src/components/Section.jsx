@@ -1,7 +1,7 @@
 import { useDrop } from "react-dnd";
 import { useState } from "react";
-import Header from "./Header";
-import Task from "./Task";
+import Header from "./header";
+import Task from "./taskBox"
 import toast from "react-hot-toast";
 
 const Section = ({ status, tasks, setTasks, todos, inProgress, closed }) => {

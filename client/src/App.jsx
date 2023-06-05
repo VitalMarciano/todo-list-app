@@ -1,23 +1,20 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import  Home  from "./pages/home";
-import  Auth  from "./pages/auth";
-import  Navbar  from "./components/navbar";
-import SignUp from "./components/signup";
-import Login from "./components/login";
+import Navbar from "./components/navbar";
+import React, { useReducer } from "react";
+import Context from "./utils/context";
+import { initState, reducer } from "./utils/reducer";
+import { pages } from "./components/pages";
+import { BrowserRouter } from "react-router-dom";
 
-function App() {
+export function App() {
+  const [state, dispatch] = useReducer(reducer, initState);
+
   return (
-    <div className="App">
-      <Router>
-        <Navbar/>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </Router>
-    </div>
+    <BrowserRouter>
+      <Context.Provider value={{ state, dispatch }}>
+        <Navbar />
+        {pages[state.view]}
+      </Context.Provider>
+    </BrowserRouter>
   );
 }
 

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import Context from "../utils/context"
+
 
 
 
@@ -9,11 +11,13 @@ const Login = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [_, setCookies] = useCookies(["access_token"]);
+  const { state, dispatch } = React.useContext(Context)
 
-  const navigate = useNavigate();
+
 
   const onSignUp= () =>{
-    navigate("/signup")
+    
+    dispatch({ type: 'SET_VIEW', param: 'signup' });
   }
 
   
@@ -34,7 +38,8 @@ const Login = ({ onLogin }) => {
           setCookies("access_token", response.data.token);
           window.localStorage.setItem("userID", response.data.userID);
           //window.location.pathname="/";
-          navigate("/"); //navigate to home page
+         
+          dispatch({ type: 'SET_VIEW', param: 'home' });
       }
     } catch (error) {
       console.error(error);

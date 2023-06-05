@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
-import TaskForm from "./TaskForm";
+import TaskForm from "./taskForm";
 
 const CreateTask = ({ tasks, setTasks }) => {
   const [showModal, setShowModal] = useState(false); // Initially hide the modal

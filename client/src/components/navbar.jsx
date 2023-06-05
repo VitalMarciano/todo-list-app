@@ -1,24 +1,27 @@
-import { Link, Navigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
-
+import React, { useContext } from 'react';
+import { useCookies } from 'react-cookie';
+import Context from '../utils/context';
 
 const Navbar = () => {
-  const [cookies, setCookies] = useCookies(["access_token"]);
+  const [cookies, setCookies] = useCookies(['access_token']);
+  const { state, dispatch } = useContext(Context);
 
-  const navigate= useNavigate();
-  
-  const logout = () =>{
-    setCookies("access_token", "");
-    window.localStorage.removeItem("userID");
-    navigate("/auth")
-  }
+  const logout = () => {
+    setCookies('access_token', '');
+    window.localStorage.removeItem('userID');
+    dispatch({ type: 'SET_VIEW', param: 'auth' });
+  };
+
+  const handleNavigate = (route) => {
+    dispatch({ type: 'SET_VIEW', param: route });
+  };
+
   return (
     <div className="navbar">
-      <Link to="/"> Home</Link>
+      <button onClick={() => handleNavigate('/')}>Home</button>
 
       {!cookies.access_token ? (
-        <Link to="/auth">Login/Register</Link>
+        <button onClick={() => handleNavigate('/auth')}>Login/Register</button>
       ) : (
         <button onClick={logout}>Logout</button>
       )}

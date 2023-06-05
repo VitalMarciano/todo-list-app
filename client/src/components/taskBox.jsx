@@ -1,7 +1,7 @@
 import { useDrag } from "react-dnd";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import TaskForm from "./TaskForm";
+import TaskForm from "./taskForm";
 
 const Task = ({ task, tasks, setTasks }) => {
  
