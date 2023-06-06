@@ -7,7 +7,7 @@ const router = express.Router();
 // GET all tasks
 
 // Creating new task
-router.post("/task", async (req, res) => {
+router.post("/tasks", async (req, res) => {
   const {
     id,
     username,
@@ -33,10 +33,8 @@ router.post("/task", async (req, res) => {
     status,
   });
 
-  try {
-    task.save();
-  } catch (error) {
-  }
+  await task.save();
+  res.json({ message: "added task!" });
 });
 
 export { router as taskRouter };

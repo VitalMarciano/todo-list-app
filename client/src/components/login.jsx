@@ -38,7 +38,9 @@ const Login = () => {
           setCookies("access_token", response.data.token);
           window.localStorage.setItem("userID", response.data.userID);
           //window.location.pathname="/";
-         
+          dispatch({ type: 'SET_USER', param: username });
+          console.log("user");
+          console.log(state.user);
           dispatch({ type: 'SET_VIEW', param: 'home' });
       }
     } catch (error) {

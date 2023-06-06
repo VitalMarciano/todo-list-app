@@ -15,17 +15,18 @@ const CreateTask = () => {
 
     const prev = state.tasks;
     const newList = prev ? [...prev, newTask] : [newTask];
+    console.log(newTask);
     try {
-        await axios.post("http://localhost:3001/tasks", {
+        await axios.post("http://localhost:3001/auth/tasks", {
         id: taskId,
-        username: state.username,
+        username: state.user,
         name: task.name,
         content: task.content,
         tags: task.tags,
         dueDate: task.dueDate,
         priority: task.priority,
-        subTasks: task.subtasks,
-        assignees: task.assignees,
+        subTasks: "",
+        assignees: "",
         status: task.status,
       });
 

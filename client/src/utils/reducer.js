@@ -1,6 +1,6 @@
 export const initState = {
   view: "auth", // signin, home
-  user: null,
+  user: "",
   tasks:  JSON.parse(localStorage.getItem("tasks")) || null,
   error: "",
 };
