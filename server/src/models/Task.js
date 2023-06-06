@@ -14,4 +14,4 @@ const taskSchema = new mongoose.Schema({
 
 });
 
-export const TaskModel=mongoose.model("tasks", taskSchema); //table named users
+export const TaskModel=mongoose.model("tasks", taskSchema); //table named tasks

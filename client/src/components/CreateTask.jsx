@@ -9,14 +9,14 @@ const CreateTask = () => {
   const [showModal, setShowModal] = useState(false); // Initially hide the modal
   const { state, dispatch } = React.useContext(Context);
 
-  const handleSubmit = (task) => {
+  const handleSubmit = async (task) => {
     const taskId = uuidv4(); // Generate a unique ID for the task
     const newTask = { ...task, id: taskId }; // Add the ID to the task object
 
     const prev = state.tasks;
     const newList = prev ? [...prev, newTask] : [newTask];
     try {
-        axios.post("http://localhost:3001/dashboard/", {
+        await axios.post("http://localhost:3001/tasks", {
         id: taskId,
         username: state.username,
         name: task.name,

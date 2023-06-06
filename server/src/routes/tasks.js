@@ -7,7 +7,7 @@ const router = express.Router();
 // GET all tasks
 
 // Creating new task
-router.post("/tasks", async (req, res) => {
+router.post("/task", async (req, res) => {
   const {
     id,
     username,
