@@ -1,7 +1,7 @@
 export const initState = {
   view: "auth", // signin, home
   user: null,
-  tasks: [],
+  tasks:  JSON.parse(localStorage.getItem("tasks")) || null,
   error: "",
 };
 
@@ -18,15 +18,17 @@ export const reducer = (state = initState, action) => {
         user: action.param,
       };
     case "SET_TASKS":
+        localStorage.setItem("tasks", JSON.stringify(action.param));
       return {
         ...state,
         tasks: action.param,
       };
     case "EXIT":
+        localStorage.removeItem("tasks");
       return {
         ...state,
         user: null,
-        tasks: [], // Update to empty array
+        tasks: null, // Update to empty array
         view: "login",
       };
     case "SET_ERROR":
