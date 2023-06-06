@@ -4,8 +4,8 @@ import Context from "./utils/context";
 import { initState, reducer } from "./utils/reducer";
 import { pages } from "./components/pages";
 import { BrowserRouter } from "react-router-dom";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import { HTML5Backend } from 'react-dnd-html5-backend'
+import { DndProvider } from 'react-dnd'
 import { Toaster } from "react-hot-toast";
 
 export function App() {

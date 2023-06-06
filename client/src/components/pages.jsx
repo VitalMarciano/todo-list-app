@@ -6,9 +6,9 @@ import SignUp from "./signup";
 
 
 export const pages = {
-    home: <Home />,
+    home: <Dashboard />,
     login: <Login />,
     signup: <SignUp />,
-    auth: <Dashboard/>,
+    auth: <Auth/>,
 
 }

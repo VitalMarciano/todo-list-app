@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
 import TaskForm from "./taskForm";
 import Context from "../utils/context"
@@ -19,7 +19,7 @@ const CreateTask = () => {
     dispatch({ type: 'SET_TASKS', param: newList });
     console.log(state.tasks);
 
-    //toast.success("Task Created");
+    toast.success("Task Created");
 
     setShowModal(false); // Hide the modal after submitting
   };

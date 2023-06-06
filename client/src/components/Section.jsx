@@ -3,7 +3,7 @@ import React from "react";
 import Header from "./header";
 import Task from "./taskBox";
 
-//import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 import Context from "../utils/context";
 
 const Section = ({ status, todos, inProgress, closed }) => {
@@ -42,8 +42,8 @@ const Section = ({ status, todos, inProgress, closed }) => {
     });
     console.log(mTasks);
     localStorage.setItem("tasks", JSON.stringify(mTasks));
-    //toast("Task status changed");
-    dispatch({ type: "SET_TASKS", param: mTasks });
+    toast("Task status changed");
+    //dispatch({ type: "SET_TASKS", param: mTasks });
   };
 
   return (

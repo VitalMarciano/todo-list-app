@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
 
 
@@ -21,12 +21,12 @@ const TaskForm = ({ initialTask, handleSubmit,  onClose}) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    /*if (task.name.length < 3) {
+    if (task.name.length < 3) {
       return toast.error("A task must have more than 3 characters");
     }
     if (task.name.length > 100) {
       return toast.error("A task must not exceed 100 characters");
-    }*/
+    }
 
     handleSubmit(task);
 

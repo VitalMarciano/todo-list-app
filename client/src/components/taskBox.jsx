@@ -1,6 +1,6 @@
 import { useDrag } from "react-dnd";
 import React,{ useState } from "react";
-//import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 import TaskForm from "./taskForm";
 import Context from "../utils/context";
 
@@ -19,7 +19,7 @@ const Task = ({ task }) => {
     const prevTasks = state.tasks;
     const updatedTasks = prevTasks.filter((t) => t.id !== id);
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-    //toast("Task Removed");
+    toast("Task Removed");
     dispatch({ type: "SET_TASKS", param: updatedTasks });
   };
 
@@ -36,7 +36,7 @@ const Task = ({ task }) => {
       t.id === task.id ? editedTask : t
     );
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-    //toast("Task Updated");
+    toast("Task Updated");
     dispatch({ type: "SET_TASKS", param: updatedTasks });
     setIsEditing(false);
   };
