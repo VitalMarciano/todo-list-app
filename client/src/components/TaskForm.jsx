@@ -41,6 +41,7 @@ const TaskForm = ({ initialTask, handleSubmit,  onClose}) => {
       assignees: [],
       status: "todo",
     });
+    
   };
 
   const handleInputChange = (e) => {

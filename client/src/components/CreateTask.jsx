@@ -2,21 +2,41 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
 import TaskForm from "./taskForm";
-import Context from "../utils/context"
+import axios from "axios";
+import Context from "../utils/context";
 
 const CreateTask = () => {
   const [showModal, setShowModal] = useState(false); // Initially hide the modal
-  const { state, dispatch } = React.useContext(Context)
+  const { state, dispatch } = React.useContext(Context);
 
   const handleSubmit = (task) => {
     const taskId = uuidv4(); // Generate a unique ID for the task
     const newTask = { ...task, id: taskId }; // Add the ID to the task object
 
-    const prev=state.tasks;
+    const prev = state.tasks;
     const newList = prev ? [...prev, newTask] : [newTask];
+    try {
+        axios.post("http://localhost:3001/dashboard/", {
+        id: taskId,
+        username: state.username,
+        name: task.name,
+        content: task.content,
+        tags: task.tags,
+        dueDate: task.dueDate,
+        priority: task.priority,
+        subTasks: task.subtasks,
+        assignees: task.assignees,
+        status: task.status,
+      });
+
+
+    } catch (error) {
+      // Handle any errors that occur during the request
+      console.error(error);
+    }
     localStorage.setItem("tasks", JSON.stringify(newList));
-   
-    dispatch({ type: 'SET_TASKS', param: newList });
+
+    dispatch({ type: "SET_TASKS", param: newList });
     console.log(state.tasks);
 
     toast.success("Task Created");
@@ -27,7 +47,6 @@ const CreateTask = () => {
   const toggleModal = () => {
     setShowModal((prev) => !prev); // Toggle the visibility of the modal
   };
-
 
   return (
     <>
@@ -53,8 +72,7 @@ const CreateTask = () => {
 
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-
-            <TaskForm handleSubmit={handleSubmit} onClose={toggleModal}  />
+          <TaskForm handleSubmit={handleSubmit} onClose={toggleModal} />
         </div>
       )}
     </>
