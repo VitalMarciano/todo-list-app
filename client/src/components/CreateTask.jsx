@@ -36,7 +36,10 @@ const CreateTask = () => {
       console.error(error);
     }
     localStorage.setItem("tasks", JSON.stringify(newList));
-
+    console.log(newList);
+    console.log(state.tasks);
+  
+    
     dispatch({ type: "SET_TASKS", param: newList });
     console.log(state.tasks);
 
