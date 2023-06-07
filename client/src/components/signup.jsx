@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Context from "../utils/context"
+import Context from "../utils/context";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -11,8 +11,7 @@ const SignUp = () => {
   const [lastName, setLastName] = useState("");
   const [birthday, setBirthday] = useState("");
   const [showModal, setShowModal] = useState(false); // Initially hide the modal
-  const { state, dispatch } = React.useContext(Context)
-
+  const { state, dispatch } = React.useContext(Context);
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -27,28 +26,28 @@ const SignUp = () => {
       lastName,
       birthday,
     };
-   
+
     try {
-      const response=await axios.post("http://localhost:3001/auth/register", {
+      const response = await axios.post("http://localhost:3001/auth/register", {
         username,
         password,
+        name,
+        lastName,
+        birthday,
       });
-      if(response.data['message']=="User already exists!"){
-        alert(response.data['message']);
-      }
-      else{
-
-        dispatch({ type: 'SET_VIEW', param: 'login' });
+      if (response.data["message"] == "User already exists!") {
+        alert(response.data["message"]);
+      } else {
+        dispatch({ type: "SET_VIEW", param: "login" });
         alert("Registration completed! Now login.");
       }
-    
     } catch (error) {
       console.error(error);
     }
   };
-  const onCancel= ()=>{
-    dispatch({ type: 'SET_VIEW', param: 'login' });
-  }
+  const onCancel = () => {
+    dispatch({ type: "SET_VIEW", param: "login" });
+  };
 
   return (
     <div className="relative flex flex-col justify-center min-h-screen mb-10">
@@ -56,9 +55,9 @@ const SignUp = () => {
         <h1 className="pt-5 text-3xl font-semibold text-center text-cyan-700 uppercase">
           Sign up
         </h1>
-        <form className="mt-6" onSubmit={onSubmit}> 
+        <form className="mt-6" onSubmit={onSubmit}>
           <div className="mb-2">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">Username:</label>
             <input
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md focus:border-cyan-400 focus:ring-cyan-300 focus:outline-none focus:ring focus:ring-opacity-40"
               type="text"
