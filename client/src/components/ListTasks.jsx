@@ -9,8 +9,8 @@ const ListTasks = () => {
 
   useEffect(() => {
     const fTodos = (state.tasks).filter((task) => task.status === "todo");
-    const fInProgress = state.tasks.filter((task) => task.status === "inprogress");
-    const fClosed = state.tasks.filter((task) => task.status === "closed");
+    const fInProgress = (state.tasks).filter((task) => task.status === "inprogress");
+    const fClosed = (state.tasks).filter((task) => task.status === "closed");
 
     setTodos(fTodos);
     setInProgress(fInProgress);

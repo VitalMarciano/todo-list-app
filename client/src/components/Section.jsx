@@ -33,16 +33,15 @@ const Section = ({ status, todos, inProgress, closed }) => {
 
   const addItemToSection = (id) => {
     const prev = state.tasks;
-    console.log(prev);
     const mTasks = prev.map((t) => {
       if (t.id === id) {
         return { ...t, status: status };
       }
       return t;
     });
-    console.log(mTasks);
+
     localStorage.setItem("tasks", JSON.stringify(mTasks));
-    toast("Task status changed");
+    toast.success("Task status changed");
     dispatch({ type: "SET_TASKS", param: mTasks });
   };
 
@@ -52,10 +51,9 @@ const Section = ({ status, todos, inProgress, closed }) => {
       className={`w-64 rounded-md p-2 ${isOver ? "bg-slate-200" : ""}`}
     >
       <Header text={text} bg={bg} count={tasksToMap.length} />
-      {tasksToMap.length > 0 &&
-        tasksToMap.map((task) => (
-          <Task key={task.id} task={task} />
-        ))}
+      {tasksToMap.map((task) => (
+        <Task key={task.id} task={task} />
+      ))}
     </div>
   );
 };
