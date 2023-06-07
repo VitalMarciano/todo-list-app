@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors()); //
 
 app.use("/auth", userRouter); 
-app.use("/auth", taskRouter); 
+app.use("/tasks", taskRouter); 
 mongoose.connect(
     "mongodb+srv://vital:Password123@todo.9phueie.mongodb.net/todo?retryWrites=true&w=majority",
     {

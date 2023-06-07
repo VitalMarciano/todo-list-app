@@ -1,16 +1,39 @@
-import React,{ useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Section from "./section";
 import Context from "../utils/context";
+import axios from "axios";
+
 const ListTasks = () => {
   const [todos, setTodos] = useState([]);
   const [inProgress, setInProgress] = useState([]);
   const [closed, setClosed] = useState([]);
-  const { state, dispatch } = React.useContext(Context)
+  const { state, dispatch } = React.useContext(Context);
+  const username=state.user;
 
   useEffect(() => {
-    const fTodos = (state.tasks).filter((task) => task.status === "todo");
-    const fInProgress = state.tasks.filter((task) => task.status === "inprogress");
-    const fClosed = state.tasks.filter((task) => task.status === "closed");
+    const fetchTasks = async () => {
+      try {
+        console.log(username);
+        const response = await axios.get(
+          `http://localhost:3001/tasks/${username}`
+        );
+        console.log(response.data);
+        dispatch({ type: "SET_TASKS", param: response.data });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchTasks();
+    
+  }, []);
+
+  useEffect(() => {
+   
+    const allTasks = state.tasks || [];
+    console.log(allTasks);
+    const fTodos = allTasks.filter((task) => task.status === "todo");
+    const fInProgress = allTasks.filter((task) => task.status === "inprogress");
+    const fClosed = allTasks.filter((task) => task.status === "closed");
 
     setTodos(fTodos);
     setInProgress(fInProgress);
