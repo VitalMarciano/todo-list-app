@@ -35,8 +35,10 @@ const Section = ({ status, todos, inProgress, closed }) => {
     const prev = state.tasks;
     const mTasks = prev.map((t) => {
       if (t.id === id) {
+        console.log(t);
         return { ...t, status: status };
       }
+      
       return t;
     });
 

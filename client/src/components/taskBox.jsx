@@ -1,8 +1,11 @@
 import { useDrag } from "react-dnd";
-import React, { useState } from "react";
+
+import React,{ useState, useEffect } from "react";
+
 import toast from "react-hot-toast";
 import TaskForm from "./taskForm";
 import Context from "../utils/context";
+
 
 const Task = ({ task }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -14,6 +17,7 @@ const Task = ({ task }) => {
       isDragging: !!monitor.isDragging(),
     }),
   }));
+
 
   const handleRemove = (id) => {
     const prevTasks = state.tasks;
