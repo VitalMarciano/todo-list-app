@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { DndProvider } from 'react-dnd'
 import { Toaster } from "react-hot-toast";
+import LayoutM from "./components/layoutModal";
 
 export function App() {
   const [state, dispatch] = useReducer(reducer, initState);
@@ -16,8 +17,7 @@ export function App() {
       <DndProvider backend={HTML5Backend}>
         <Toaster />
         <Context.Provider value={{ state, dispatch }}>
-          <Navbar />
-          {pages[state.view]}
+          <LayoutM>{pages[state.view]}</LayoutM>
         </Context.Provider>
       </DndProvider>
     </BrowserRouter>

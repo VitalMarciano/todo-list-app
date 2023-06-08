@@ -14,7 +14,8 @@ const CreateTask = () => {
     const newTask = { ...task, id: taskId }; // Add the ID to the task object
 
     const prev = state.tasks;
-    const newList = prev ? [...prev, newTask] : [newTask];
+    //const newList = prev ? [...prev, newTask] : [newTask];
+    const newList =[...state.tasks, newTask];
     console.log(newTask);
     try {
         await axios.post("http://localhost:3001/auth/tasks", {
@@ -36,7 +37,10 @@ const CreateTask = () => {
       console.error(error);
     }
     localStorage.setItem("tasks", JSON.stringify(newList));
+    console.log("newList");
     console.log(newList);
+
+    console.log("state.tasks");
     console.log(state.tasks);
   
     

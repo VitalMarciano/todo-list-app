@@ -27,8 +27,11 @@ const TaskForm = ({ initialTask, handleSubmit,  onClose}) => {
     if (task.name.length > 100) {
       return toast.error("A task must not exceed 100 characters");
     }
-
-    handleSubmit(task);
+    const updatedTask = {
+      ...task,
+      id: task.id || uuidv4(), // Generate a new id if it doesn't exist
+    };
+    handleSubmit(updatedTask);
 
     setTask({
       id: "",
