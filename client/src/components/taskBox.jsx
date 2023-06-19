@@ -76,7 +76,9 @@ const Task = ({ task }) => {
 
   return (
     <div
+
       key={task._id}
+
       ref={drag}
       className={`relative p-4 mt-8 shadow-md rounded-md ${
         isDragging ? "opacity-25" : "opacity-100"

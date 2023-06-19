@@ -12,7 +12,7 @@ const ListTasks = (props) => {
   useEffect(() => {
 
     props.fetchTasks();
-    
+
   }, []);
 
   useEffect(() => {
@@ -22,6 +22,7 @@ const ListTasks = (props) => {
     const fTodos = allTasks.filter((task) => task.status === "todo");
     const fInProgress = allTasks.filter((task) => task.status === "inprogress");
     const fClosed = allTasks.filter((task) => task.status === "closed");
+
 
     setTodos(fTodos);
     setInProgress(fInProgress);

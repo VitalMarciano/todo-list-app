@@ -51,7 +51,7 @@ const Section = ({ status, todos, inProgress, closed }) => {
       ref={drop}
       className={`w-64 rounded-md p-2 ${isOver ? "bg-slate-200" : ""}`}
     >
-      <Header text={text} bg={bg} count={tasksToMap.length} />
+      <Header  text={text} bg={bg} count={tasksToMap.length} />
       {tasksToMap.map((task) => (
         <Task key={task._id} task={task} />
       ))}

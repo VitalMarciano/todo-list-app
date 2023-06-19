@@ -11,8 +11,10 @@ const CreateTask = (props) => {
 
   const handleSubmit = async (task) => {
     const prev = state.tasks;
+
     let newList = [];
     console.log(task);
+
     try {
       const response = await fetch("http://localhost:3001/tasks", {
         method: "POST",
@@ -48,7 +50,10 @@ const CreateTask = (props) => {
     }
 
     localStorage.setItem("tasks", JSON.stringify(newList));
+    console.log("newList");
     console.log(newList);
+
+    console.log("state.tasks");
     console.log(state.tasks);
 
     dispatch({ type: "SET_TASKS", param: newList });
