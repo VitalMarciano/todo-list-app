@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Section from "./section";
+import Section from "./Section";
 import Context from "../utils/context";
 
 

@@ -31,10 +31,16 @@ router.post("/", async(req, res) => {
 
 // update task
 router.put("/", async (req, res) => {
-  const task = await TaskModel.findById(req.body._id);
+  console.log("UPDAETEED");
+  console.log(req.body);
+  const id=req.body._id;
+  const task = await TaskModel.findByIdAndUpdate({_id: id} , req.body);
+  console.log(task);
   try {
+    console.log("TRY TO SAVE");
     await task.save();
     res.status(201).json({ message: "task updated!" });
+    console.log("save?");
   } catch (err) {
     res.status(500).json(err);
   }
