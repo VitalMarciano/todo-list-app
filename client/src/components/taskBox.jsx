@@ -9,7 +9,7 @@ const Task = ({ task }) => {
   const { state, dispatch } = React.useContext(Context);
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "task",
-    item: { id: task._id },
+    item: { _id: task._id },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -51,12 +51,42 @@ const Task = ({ task }) => {
   const handleSave = (editedTask) => {
     const prevTasks = state.tasks;
     const updatedTasks = prevTasks.map((t) =>
-      t._id === task._id ? editedTask : t
+      t._id === editedTask._id ? editedTask : t
     );
-    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-    toast("Task Updated");
-    dispatch({ type: "SET_TASKS", param: updatedTasks });
-    setIsEditing(false);
+    fetch(`http://localhost:3001/tasks`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        _id: editedTask._id,  
+        username: editedTask.username,
+        name: editedTask.name,
+        content: editedTask.content,
+        tags: editedTask.tags,
+        dueDate: editedTask.dueDate,
+        priority: editedTask.priority,
+        subTasks: "",
+        assignees: "",
+        status: editedTask.status,
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Task not found");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data); // Optional: Log the response from the server
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+        toast("Task Updated");
+        dispatch({ type: "SET_TASKS", param: updatedTasks });
+        setIsEditing(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   let priorityColor;
@@ -76,9 +106,7 @@ const Task = ({ task }) => {
 
   return (
     <div
-
       key={task._id}
-
       ref={drag}
       className={`relative p-4 mt-8 shadow-md rounded-md ${
         isDragging ? "opacity-25" : "opacity-100"

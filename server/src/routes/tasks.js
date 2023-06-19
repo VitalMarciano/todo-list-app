@@ -31,7 +31,7 @@ router.post("/", async(req, res) => {
 
 // update task
 router.put("/", async (req, res) => {
-  const task = await TaskModel.findById(req.body.id);
+  const task = await TaskModel.findById(req.body._id);
   try {
     await task.save();
     res.status(201).json({ message: "task updated!" });

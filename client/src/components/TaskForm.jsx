@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { v4 as uuidv4 } from "uuid";
 
 
 const TaskForm = ({ initialTask, handleSubmit,  onClose}) => {
@@ -29,12 +28,12 @@ const TaskForm = ({ initialTask, handleSubmit,  onClose}) => {
     }
     const updatedTask = {
       ...task,
-      id: task.id || uuidv4(), // Generate a new id if it doesn't exist
+      _id: task._id, // Generate a new id if it doesn't exist
     };
     handleSubmit(updatedTask);
 
     setTask({
-      _id: null,
+      _id: "",
       name: "",
       content: "",
       tags: "",

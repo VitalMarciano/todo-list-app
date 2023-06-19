@@ -22,7 +22,6 @@ const CreateTask = (props) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          //id: taskId,
           username: state.user,
           name: task.name,
           content: task.content,
@@ -39,8 +38,8 @@ const CreateTask = (props) => {
         throw new Error("Request failed with status " + response.status);
       }
       const data = await response.json(); // Extract the JSON data from the response
-      const taskId = data.id; // Access the ID returned by the server
-      const newTask = { ...task, id: taskId }; // Add the ID to the task object
+      const taskId = data._id; // Access the ID returned by the server
+      const newTask = { ...task, _id: taskId }; // Add the ID to the task object
       newList = prev ? [...prev, newTask] : [newTask];
       console.log(taskId);    
 

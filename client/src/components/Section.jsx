@@ -10,7 +10,7 @@ const Section = ({ status, todos, inProgress, closed }) => {
   const { state, dispatch } = React.useContext(Context);
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "task",
-    drop: (item) => addItemToSection(item.id),
+    drop: (item) => addItemToSection(item._id),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
@@ -34,7 +34,7 @@ const Section = ({ status, todos, inProgress, closed }) => {
   const addItemToSection = (id) => {
     const prev = state.tasks;
     const mTasks = prev.map((t) => {
-      if (t.id === id) {
+      if (t._id === id) {
         console.log(t);
         return { ...t, status: status };
       }

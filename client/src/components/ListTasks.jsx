@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Section from "./section";
 import Context from "../utils/context";
-import axios from "axios";
+
 
 const ListTasks = (props) => {
   const [todos, setTodos] = useState([]);
