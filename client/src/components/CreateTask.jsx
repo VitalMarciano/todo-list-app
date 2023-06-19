@@ -5,47 +5,60 @@ import TaskForm from "./taskForm";
 import axios from "axios";
 import Context from "../utils/context";
 
-const CreateTask = () => {
+const CreateTask = (props) => {
   const [showModal, setShowModal] = useState(false); // Initially hide the modal
   const { state, dispatch } = React.useContext(Context);
 
   const handleSubmit = async (task) => {
-    const taskId = uuidv4(); // Generate a unique ID for the task
-    const newTask = { ...task, id: taskId }; // Add the ID to the task object
-
     const prev = state.tasks;
-    const newList = prev ? [...prev, newTask] : [newTask];
-    console.log(newTask);
+    let newList = [];
+    console.log(task);
     try {
-        await axios.post("http://localhost:3001/tasks", {
-        id: taskId,
-        username: state.user,
-        name: task.name,
-        content: task.content,
-        tags: task.tags,
-        dueDate: task.dueDate,
-        priority: task.priority,
-        subTasks: "",
-        assignees: "",
-        status: task.status,
+      const response = await fetch("http://localhost:3001/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          //id: taskId,
+          username: state.user,
+          name: task.name,
+          content: task.content,
+          tags: task.tags,
+          dueDate: task.dueDate,
+          priority: task.priority,
+          subTasks: "",
+          assignees: "",
+          status: task.status,
+        }),
       });
 
+      if (!response.ok) {
+        throw new Error("Request failed with status " + response.status);
+      }
+      const data = await response.json(); // Extract the JSON data from the response
+      const taskId = data.id; // Access the ID returned by the server
+      const newTask = { ...task, id: taskId }; // Add the ID to the task object
+      newList = prev ? [...prev, newTask] : [newTask];
+      console.log(taskId);    
 
     } catch (error) {
       // Handle any errors that occur during the request
       console.error(error);
     }
+
     localStorage.setItem("tasks", JSON.stringify(newList));
     console.log(newList);
     console.log(state.tasks);
-  
-    
+
     dispatch({ type: "SET_TASKS", param: newList });
     console.log(state.tasks);
 
     toast.success("Task Created");
 
     setShowModal(false); // Hide the modal after submitting
+    console.log(state.tasks);
+    props.fetchTasks();
   };
 
   const toggleModal = () => {

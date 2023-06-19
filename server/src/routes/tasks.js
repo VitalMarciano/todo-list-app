@@ -1,15 +1,11 @@
 import express from "express";
-
+import mongoose from "mongoose";
 import { TaskModel } from "../models/Task.js";
-
 const router = express.Router();
 
-// GET all tasks
-
 // Creating new task
-router.post("/", async (req, res) => {
+router.post("/", async(req, res) => {
   const task = new TaskModel({
-    id: req.body.id,
     username: req.body.username,
     name: req.body.name,
     content: req.body.content,
@@ -20,9 +16,13 @@ router.post("/", async (req, res) => {
     assignees: req.body.assignees,
     status: req.body.status,
   });
+  console.log("this is task:");
+  console.log(task);
   try {
     const result = await task.save();
-    res.json({ message: "added task!" });
+    console.log("this is res:");
+    console.log(result._id);
+    res.status(201).json({ _id: result._id }); // Return the ID of the newly created task
   } catch (err) {
     // console.log(err);
     res.status(500).json(err);
@@ -40,18 +40,32 @@ router.put("/", async (req, res) => {
   }
 });
 
-
 // Get tasks by username
 router.get("/:username", async (req, res) => {
   try {
-    
     const tasks = await TaskModel.find({ username: req.params.username });
     console.log(tasks);
     res.json(tasks);
-   
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
+// Delete task by ID
+router.delete("/:id", async (req, res) => {
+  try {
+    const taskId = req.params.id;
+    console.log(taskId);
+    const deletedTask = await TaskModel.findByIdAndDelete(taskId);
+    if (!deletedTask) {
+      return res.status(404).json({ message: "Task not found" });
+    }
+    res.json({ message: "Task deleted", task: deletedTask });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 export { router as taskRouter };

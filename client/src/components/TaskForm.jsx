@@ -7,7 +7,7 @@ const TaskForm = ({ initialTask, handleSubmit,  onClose}) => {
   const [showModal, setShowModal] = useState(true); // Initially hide the modal
   const [task, setTask] = useState(
     initialTask || {
-      id: "",
+      _id: null,
       name: "",
       content: "",
       tags: "",
@@ -31,7 +31,7 @@ const TaskForm = ({ initialTask, handleSubmit,  onClose}) => {
     handleSubmit(task);
 
     setTask({
-      id: "",
+      _id: null,
       name: "",
       content: "",
       tags: "",

@@ -3,28 +3,15 @@ import Section from "./section";
 import Context from "../utils/context";
 import axios from "axios";
 
-const ListTasks = () => {
+const ListTasks = (props) => {
   const [todos, setTodos] = useState([]);
   const [inProgress, setInProgress] = useState([]);
   const [closed, setClosed] = useState([]);
   const { state, dispatch } = React.useContext(Context);
-  const username=state.user;
-
+  
   useEffect(() => {
 
-    const fetchTasks = async () => {
-      try {
-        console.log(username);
-        const response = await axios.get(
-          `http://localhost:3001/tasks/${username}`
-        );
-        console.log(response.data);
-        dispatch({ type: "SET_TASKS", param: response.data });
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchTasks();
+    props.fetchTasks();
     
   }, []);
 

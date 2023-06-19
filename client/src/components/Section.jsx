@@ -38,7 +38,6 @@ const Section = ({ status, todos, inProgress, closed }) => {
         console.log(t);
         return { ...t, status: status };
       }
-      
       return t;
     });
 
@@ -54,7 +53,7 @@ const Section = ({ status, todos, inProgress, closed }) => {
     >
       <Header text={text} bg={bg} count={tasksToMap.length} />
       {tasksToMap.map((task) => (
-        <Task key={task.id} task={task} />
+        <Task key={task._id} task={task} />
       ))}
     </div>
   );

@@ -1,27 +1,43 @@
 import { useDrag } from "react-dnd";
-import React,{ useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import TaskForm from "./taskForm";
 import Context from "../utils/context";
-
 
 const Task = ({ task }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { state, dispatch } = React.useContext(Context);
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "task",
-    item: { id: task.id },
+    item: { id: task._id },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
   }));
 
-
   const handleRemove = (id) => {
     const prevTasks = state.tasks;
-    const updatedTasks = prevTasks.filter((t) => t.id !== id);
+    const updatedTasks = prevTasks.filter((t) => t._id !== id);
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     toast("Task Removed");
+
+    console.log(id);
+    // Send DELETE request to delete task from the database
+    fetch(`http://localhost:3001/tasks/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Task not found");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data); // Optional: Log the response from the server
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     dispatch({ type: "SET_TASKS", param: updatedTasks });
   };
 
@@ -35,7 +51,7 @@ const Task = ({ task }) => {
   const handleSave = (editedTask) => {
     const prevTasks = state.tasks;
     const updatedTasks = prevTasks.map((t) =>
-      t.id === task.id ? editedTask : t
+      t._id === task._id ? editedTask : t
     );
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     toast("Task Updated");
@@ -60,6 +76,7 @@ const Task = ({ task }) => {
 
   return (
     <div
+      key={task._id}
       ref={drag}
       className={`relative p-4 mt-8 shadow-md rounded-md ${
         isDragging ? "opacity-25" : "opacity-100"
@@ -80,7 +97,7 @@ const Task = ({ task }) => {
           <p>{task.priority}</p>
           <button
             className="absolute bottom-1 right-1 text-slate-400"
-            onClick={() => handleRemove(task.id)}
+            onClick={() => handleRemove(task._id)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
