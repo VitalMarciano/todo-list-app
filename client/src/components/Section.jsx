@@ -17,7 +17,7 @@ const Section = ({ status, todos, inProgress, closed }) => {
   }));
 
   let text = "Todo";
-  let bg = "bg-slate-500";
+  let bg = "bg-blue-500";
   let tasksToMap = todos;
 
   if (status === "inprogress") {

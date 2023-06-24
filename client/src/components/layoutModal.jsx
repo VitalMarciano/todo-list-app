@@ -10,9 +10,12 @@ function LayoutM({ children }) {
   return (
     <>
     <div className={`layoutM ${state.darkMode ? "dark" : ""}`}>
-      <div className="flex flex-row relative flex-min-h-screen">
-        <Sidebar></Sidebar>
-        <div className="flex flex-1 flex-col bg-slate-100">
+      <div className="flex flex-row relative flex-min-h-screen ">
+      {state.username ? (
+   
+        <Sidebar></Sidebar>):
+        <></>}
+        <div className="flex flex-1 flex-col bg-slate-100 dark:bg-neutral-700 ">
           <Navbar></Navbar>
           {children}
           <footer className="bg-slate-100 text-center dark:bg-neutral-700 lg:text-left">
