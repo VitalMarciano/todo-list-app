@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-
-
-const TaskForm = ({ initialTask, handleSubmit,  onClose}) => {
+import ChipInputFeild from "./chipInput"
+const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
   const [showModal, setShowModal] = useState(true); // Initially hide the modal
   const [task, setTask] = useState(
     initialTask || {
@@ -43,7 +42,6 @@ const TaskForm = ({ initialTask, handleSubmit,  onClose}) => {
       assignees: [],
       status: "todo",
     });
-    
   };
 
   const handleInputChange = (e) => {
@@ -59,7 +57,6 @@ const TaskForm = ({ initialTask, handleSubmit,  onClose}) => {
   };
 
   return (
-    
     <div className="fixed inset-0 flex items-center justify-center z-50 ">
       <div className="relative bg-slate-300 p-4 rounded-md dark:bg-gray-800">
         <button
@@ -82,7 +79,7 @@ const TaskForm = ({ initialTask, handleSubmit,  onClose}) => {
           </svg>
         </button>
         <form onSubmit={handleFormSubmit} className="flex justify-start w-200">
-          <div className="flex flex-col space-y-2  bg-white bg-opacity-30 p-10 rounded-md dark: bg-opacity-10">
+          <div className="flex flex-col space-y-2  bg-white bg-opacity-30 p-10 rounded-md dark:bg-opacity-10">
             <label htmlFor="name" className="formlbl">
               Task Name:
             </label>
@@ -94,7 +91,7 @@ const TaskForm = ({ initialTask, handleSubmit,  onClose}) => {
               value={task.name}
               onChange={handleInputChange}
             />
-
+            
             <label htmlFor="content" className="formlbl">
               Task Content:
             </label>
@@ -117,7 +114,7 @@ const TaskForm = ({ initialTask, handleSubmit,  onClose}) => {
               value={task.tags}
               onChange={handleInputChange}
             />
-
+            <ChipInputFeild></ChipInputFeild>
             <label htmlFor="dueDate" className="formlbl">
               Due Date:
             </label>
@@ -130,7 +127,6 @@ const TaskForm = ({ initialTask, handleSubmit,  onClose}) => {
               min={currentDate}
               onChange={handleInputChange}
             />
-
             <label htmlFor="priority" className="formlbl">
               Priority:
             </label>
@@ -157,7 +153,6 @@ const TaskForm = ({ initialTask, handleSubmit,  onClose}) => {
         </form>
       </div>
     </div>
-
   );
 };
 
