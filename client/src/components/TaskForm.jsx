@@ -8,7 +8,7 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
       _id: null,
       name: "",
       content: "",
-      tags: "",
+      tags: [],
       dueDate: "",
       priority: "",
       subTasks: [],
@@ -16,6 +16,7 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
       status: "todo",
     }
   );
+
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +36,7 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
       _id: "",
       name: "",
       content: "",
-      tags: "",
+      tags: [],
       dueDate: "",
       priority: "",
       subTasks: [],
@@ -43,7 +44,9 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
       status: "todo",
     });
   };
-
+  const handleUpdateTask = (updatedTask) => {
+    setTask(updatedTask);
+  };
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setTask((prevTask) => ({ ...prevTask, [name]: value }));
@@ -106,15 +109,8 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
             <label htmlFor="tags" className="formlbl">
               Task Tags:
             </label>
-            <input
-              type="text"
-              id="tags"
-              name="tags"
-              className="taskforminput h-10"
-              value={task.tags}
-              onChange={handleInputChange}
-            />
-            <ChipInputFeild></ChipInputFeild>
+          
+            <ChipInputFeild task={task} onUpdateTask={handleUpdateTask} ></ChipInputFeild>
             <label htmlFor="dueDate" className="formlbl">
               Due Date:
             </label>
