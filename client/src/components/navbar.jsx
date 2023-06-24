@@ -10,10 +10,10 @@ const Navbar = () => {
 
   return (
     <div className={`navbar ${state.darkMode ? "dark" : ""}`}>
-      <div className={`navbar bg-slate-300 dark:bg-neutral-800 `}>
+      <div className={`navbar bg-slate-300 dark:bg-neutral-800 h-full`}>
         <div className="flex justify-center">
           <div className="text-lg font-bold text-gray-800 dark:text-white">
-            Welcome, [YourName]
+            Welcome!
           </div>
         </div>
         <div className="flex justify-end">

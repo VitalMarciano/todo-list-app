@@ -10,7 +10,8 @@ export default function Sidebar() {
   const logout = () => {
     setCookies("access_token", "");
     window.localStorage.removeItem("userID");
-    dispatch({ type: "SET_VIEW", param: "auth" });
+    dispatch({ type: "SET_VIEW", param: "login" });
+    dispatch({ type: "SET_USER", param: null });
   };
   const handleNavigate = (route) => {
     dispatch({ type: "SET_VIEW", param: route });
@@ -19,7 +20,7 @@ export default function Sidebar() {
     <>
       {showSidebar ? (
         <button
-          className="flex text-4xl items-center cursor-pointer fixed left-40 top-2 z-50"
+          className="flex text-4xl items-center cursor-pointer fixed left-40 top-2 z-50 dark:text-white"
           onClick={() => setShowSidebar(!showSidebar)}
         >
           x
@@ -44,17 +45,17 @@ export default function Sidebar() {
           showSidebar ? "translate-x-0" : "-translate-x-full overflow-hidden"
         }`}
       >
-        <div className="flex flex-col h-screen p-6 bg-white shadow w-60">
+        <div className="flex flex-col h-screen p-6 bg-white shadow w-60 dark:bg-neutral-800">
           <div className="space-y-3">
             <div className="flex items-center">
-              <h2 className="text-xl font-bold">Dashboard</h2>
+              <h2 className="text-xl font-bold dark:text-white">Dashboard</h2>
             </div>
             <div className="flex-1">
               <ul className="pt-2 pb-4 space-y-1 text-sm">
                 <li className="rounded-sm">
                   <a
                     href="#"
-                    className="flex items-center p-2 space-x-3 rounded-md"
+                    className="sidebarlbl"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +78,7 @@ export default function Sidebar() {
                 <li className="rounded-sm">
                   <a
                     href="#"
-                    className="flex items-center p-2 space-x-3 rounded-md"
+                    className="sidebarlbl"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +100,7 @@ export default function Sidebar() {
                 <li className="rounded-sm">
                   <a
                     href="#"
-                    className="flex items-center p-2 space-x-3 rounded-md"
+                    className="sidebarlbl"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +127,7 @@ export default function Sidebar() {
                 <li className="rounded-sm">
                   <a
                     href="#"
-                    className="flex items-center p-2 space-x-3 rounded-md"
+                    className="sidebarlbl"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
