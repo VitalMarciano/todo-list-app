@@ -10,13 +10,13 @@ const Navbar = () => {
 
   return (
     <div className={`navbar ${state.darkMode ? "dark" : ""}`}>
-      <div className={`navbar bg-slate-300 dark:bg-neutral-800 h-full`}>
+      <div className={`navbar bg-slate-300 h-14 dark:bg-slate-800 fixed w-full z-20 top-0 left-0`}>
         <div className="flex justify-center">
           <div className="text-lg font-bold text-gray-800 dark:text-white">
             Welcome!
           </div>
         </div>
-        <div className="flex justify-end">
+        <div className="flex right-4 items-center cursor-pointer fixed top-4 z-50">
           <button onClick={toggleDarkMode}>
             {state.darkMode ? (
               <a
@@ -25,7 +25,7 @@ const Navbar = () => {
                 data-hs-theme-click-value="dark"
               >
                 <svg
-                  className="w-4 h-4"
+                  className="w-5 h-5"
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"
@@ -42,7 +42,7 @@ const Navbar = () => {
                 data-hs-theme-click-value="light"
               >
                 <svg
-                  className="w-4 h-4"
+                  className="w-5 h-5"
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
                   height="16"

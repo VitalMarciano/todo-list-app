@@ -19,33 +19,34 @@ export default function Sidebar() {
   return (
     <>
       {showSidebar ? (
-        <button
-          className="flex text-4xl items-center cursor-pointer fixed left-40 top-2 z-50 dark:text-white"
-          onClick={() => setShowSidebar(!showSidebar)}
-        >
-          x
-        </button>
+        <></>
       ) : (
         <svg
           onClick={() => setShowSidebar(!showSidebar)}
-          className="fixed  z-30 flex items-center cursor-pointer left-10 top-6"
+          className="fixed  z-30 flex items-center cursor-pointer left-10 top-3"
           fill="#2563EB"
           viewBox="0 0 100 80"
           width="40"
           height="40"
         >
-          <rect width="100" height="10"></rect>
-          <rect y="30" width="100" height="10"></rect>
-          <rect y="60" width="100" height="10"></rect>
+          <rect width="100" height="10"  rx="7" ry="7"></rect>
+          <rect y="30" width="100" height="10" rx="7" ry="7"></rect>
+          <rect y="60" width="100" height="10" rx="7" ry="7"></rect>
         </svg>
       )}
 
       <div
-        className={`flex top-0 left-0 fixed h-full z-60 duration-200 ease-in-out  ${
+        className={`flex top-9 left-0 fixed h-full z-60 duration-200 ease-in-out  ${
           showSidebar ? "translate-x-0" : "-translate-x-full overflow-hidden"
         }`}
       >
-        <div className="flex flex-col h-screen p-6 bg-white shadow w-60 dark:bg-neutral-800">
+        <button
+          className="flex right-2 text-4xl items-center cursor-pointer fixed top-2 z-50 dark:text-white"
+          onClick={() => setShowSidebar(!showSidebar)}
+        >
+          x
+        </button>
+        <div className="flex flex-col h-screen p-6 bg-white shadow w-60 dark:bg-slate-800">
           <div className="space-y-3">
             <div className="flex items-center">
               <h2 className="text-xl font-bold dark:text-white">Dashboard</h2>

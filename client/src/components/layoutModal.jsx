@@ -15,14 +15,14 @@ function LayoutM({ children }) {
    
         <Sidebar></Sidebar>):
         (<></>)}
-        <div className="flex flex-1 flex-col bg-slate-100 dark:bg-neutral-700 ">
+        <div className="flex flex-1 flex-col bg-slate-100 dark:bg-slate-900 ">
           <Navbar></Navbar>
           {children}
-          <footer className="bg-slate-100 text-center dark:bg-neutral-700 lg:text-left">
-            <div className="p-4 text-center text-neutral-700 dark:text-neutral-200">
+          <footer className="bg-slate-100 text-center dark:bg-slate-800 lg:text-left">
+            <div className="p-4 text-center text-slate-700 dark:text-slate-200">
               © 2023 Copyright:
               <a
-                className="text-neutral-800 dark:text-neutral-200"
+                className="text-slate-800 dark:text-slate-400"
                 href="https://www.example.com"
                 target="_blank"
                 rel="noopener noreferrer"
