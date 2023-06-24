@@ -1,6 +1,6 @@
 export const initState = {
   view: "login",
-  user: "",
+  user: null,
   tasks: null,
   error: "",
   darkMode: false, // Add the darkMode state

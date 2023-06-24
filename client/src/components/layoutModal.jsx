@@ -11,10 +11,10 @@ function LayoutM({ children }) {
     <>
     <div className={`layoutM ${state.darkMode ? "dark" : ""}`}>
       <div className="flex flex-row relative flex-min-h-screen ">
-      {state.username ? (
+      {state.user ? (
    
         <Sidebar></Sidebar>):
-        <></>}
+        (<></>)}
         <div className="flex flex-1 flex-col bg-slate-100 dark:bg-neutral-700 ">
           <Navbar></Navbar>
           {children}
