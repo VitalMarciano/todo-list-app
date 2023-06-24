@@ -19,13 +19,11 @@ export const reducer = (state = initState, action) => {
         user: action.param,
       };
     case "SET_TASKS":
-      localStorage.setItem("tasks", JSON.stringify(action.param));
       return {
         ...state,
         tasks: action.param,
       };
     case "EXIT":
-      localStorage.removeItem("tasks");
       return {
         ...state,
         user: null,

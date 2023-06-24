@@ -48,7 +48,6 @@ const CreateTask = (props) => {
       console.error(error);
     }
 
-    localStorage.setItem("tasks", JSON.stringify(newList));
     console.log("newList");
     console.log(newList);
 
