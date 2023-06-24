@@ -1,8 +1,9 @@
 export const initState = {
-  view: "auth", // signin, home
+  view: "login",
   user: "",
-  tasks:  null,
+  tasks: null,
   error: "",
+  darkMode: false, // Add the darkMode state
 };
 
 export const reducer = (state = initState, action) => {
@@ -18,23 +19,28 @@ export const reducer = (state = initState, action) => {
         user: action.param,
       };
     case "SET_TASKS":
-        localStorage.setItem("tasks", JSON.stringify(action.param));
+      localStorage.setItem("tasks", JSON.stringify(action.param));
       return {
         ...state,
         tasks: action.param,
       };
     case "EXIT":
-        localStorage.removeItem("tasks");
+      localStorage.removeItem("tasks");
       return {
         ...state,
         user: null,
-        tasks: null, // Update to empty array
+        tasks: null,
         view: "login",
       };
     case "SET_ERROR":
       return {
         ...state,
         error: action.param,
+      };
+    case "TOGGLE_DARK_MODE":
+      return {
+        ...state,
+        darkMode: !state.darkMode,
       };
     default:
       return state;
