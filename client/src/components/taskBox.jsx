@@ -88,20 +88,18 @@ const Task = ({ task }) => {
       });
     };
   let priorityColor;
-
-  
   switch (task.priority) {
     case "low":
-      priorityColor = "bg-emerald-200 dark:bg-emerald-500 ";
+      priorityColor = "bg-green-200";
       break;
     case "medium":
-      priorityColor = "bg-amber-200 dark:bg-amber-500";
+      priorityColor = "bg-yellow-200";
       break;
     case "high":
-      priorityColor = "bg-rose-200 dark:bg-rose-500";
+      priorityColor = "bg-orange-200";
       break;
     default:
-      priorityColor = "bg-slate-200 dark:bg-slate-500";
+      priorityColor = "";
   }
 
   return (
@@ -110,7 +108,7 @@ const Task = ({ task }) => {
       ref={drag}
       className={`relative p-4 mt-8 shadow-md rounded-md ${
         isDragging ? "opacity-25" : "opacity-100"
-      } cursor-grab ${priorityColor} dark:text-slate-100`}
+      } cursor-grab ${priorityColor}`}
     >
       {isEditing ? (
         <TaskForm
