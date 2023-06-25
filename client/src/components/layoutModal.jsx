@@ -14,9 +14,11 @@ function LayoutM({ children }) {
       {state.user ? (
    
         <Sidebar></Sidebar>):
-        (<></>)}
+        (<></>)
+        }
         <div className="flex flex-1 flex-col bg-slate-100 dark:bg-slate-900 ">
           <Navbar></Navbar>
+
           {children}
           <footer className="bg-slate-100 text-center dark:bg-slate-800 lg:text-left">
             <div className="p-4 text-center text-slate-700 dark:text-slate-200">
