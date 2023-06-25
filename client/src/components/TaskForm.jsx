@@ -110,7 +110,7 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
               Task Tags:
             </label>
           
-            <ChipInputFeild task={task} onUpdateTask={handleUpdateTask} ></ChipInputFeild>
+            <ChipInputFeild type={"tags"}task={task} onUpdateTask={handleUpdateTask} ></ChipInputFeild>
             <label htmlFor="dueDate" className="formlbl">
               Due Date:
             </label>
