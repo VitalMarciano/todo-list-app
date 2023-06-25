@@ -10,8 +10,7 @@ export default function Sidebar() {
   const logout = () => {
     setCookies("access_token", "");
     window.localStorage.removeItem("userID");
-    dispatch({ type: "SET_VIEW", param: "login" });
-    dispatch({ type: "SET_USER", param: null });
+    dispatch({ type: "EXIT", param: null });
   };
   const handleNavigate = (route) => {
     dispatch({ type: "SET_VIEW", param: route });
