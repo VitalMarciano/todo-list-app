@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ChipInputField = ({ task, onUpdateTask }) => {
+const ChipInputField = ({ type, task, onUpdateTask }) => {
   const [chips, setChips] = useState(task.tags || []);
   const [inputValue, setInputValue] = useState("");
 
@@ -30,13 +30,13 @@ const ChipInputField = ({ task, onUpdateTask }) => {
         {chips.map((chip, index) => (
           <div
             key={index}
-            className="flex items-center gap-2 bg-blue-500 text-white py-1 px-2 rounded-full"
+            className="flex items-center gap-2 bg-blue-100 text-blue-600 py-1 px-2 rounded-full"
           >
             <span className="whitespace-nowrap">{chip}</span>
             <button
               type="button"
               onClick={() => handleRemoveChip(index)}
-              className="bg-red-500 text-white rounded-full p-1 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400"
+              className="bg-blue-200 text-blue-700 rounded-full p-1 hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-red-400"
             >
               <svg
                 className="h-3 w-3"

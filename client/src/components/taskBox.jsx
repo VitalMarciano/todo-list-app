@@ -53,18 +53,20 @@ const Task = ({ task,handleSave }) => {
   };
 
   let priorityColor;
+
+  
   switch (task.priority) {
     case "low":
-      priorityColor = "bg-green-200";
+      priorityColor = "bg-emerald-200 dark:bg-emerald-500 ";
       break;
     case "medium":
-      priorityColor = "bg-yellow-200";
+      priorityColor = "bg-amber-200 dark:bg-amber-500";
       break;
     case "high":
-      priorityColor = "bg-orange-200";
+      priorityColor = "bg-rose-200 dark:bg-rose-500";
       break;
     default:
-      priorityColor = "";
+      priorityColor = "bg-slate-200 dark:bg-slate-500";
   }
 
   return (
@@ -73,7 +75,7 @@ const Task = ({ task,handleSave }) => {
       ref={drag}
       className={`relative p-4 mt-8 shadow-md rounded-md ${
         isDragging ? "opacity-25" : "opacity-100"
-      } cursor-grab ${priorityColor}`}
+      } cursor-grab ${priorityColor} dark:text-slate-100`}
     >
       {isEditing ? (
         <TaskForm
