@@ -40,6 +40,7 @@ const Login = () => {
           //window.location.pathname="/";
           dispatch({ type: 'SET_USER', param: username });
           console.log("user");
+          console.log(username);
           console.log(state.user);
           dispatch({ type: 'SET_VIEW', param: 'home' });
       }

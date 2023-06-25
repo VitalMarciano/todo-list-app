@@ -1,22 +1,22 @@
 import { useDrag } from "react-dnd";
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import toast from "react-hot-toast";
 import TaskForm from "./taskForm";
 import Context from "../utils/context";
 
-const Task = ({ task,handleSave }) => {
+const Task = ({ task }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { state, dispatch } = React.useContext(Context);
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "task",
-    item: { _id: task._id },
+    item: { task: task },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
   }));
 
   const handleRemove = (id) => {
-    const prevTasks = state.tasks;
+    const prevTasks = [...state.tasks];
     const updatedTasks = prevTasks.filter((t) => t._id !== id);
     toast("Task Removed");
     console.log(id);
@@ -37,6 +37,7 @@ const Task = ({ task,handleSave }) => {
         console.log(error);
       });
     dispatch({ type: "SET_TASKS", param: updatedTasks });
+    console.log(state.tasks);
   };
 
   const toggleEdit = () => {
@@ -46,12 +47,46 @@ const Task = ({ task,handleSave }) => {
     setIsEditing(true);
   };
 
-  const handleSaveTask = (editedTask) => {
-      handleSave(editedTask);
-      setIsEditing(false);
-      
-  };
-
+  const handleSave = (editedTask) => {
+    const prevTasks = [...state.tasks];
+    const updatedTasks = prevTasks.map((t) =>
+      t._id === editedTask._id ? editedTask : t
+    );
+    fetch(`http://localhost:3001/tasks`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        _id: editedTask._id,  
+        username: editedTask.username,
+        name: editedTask.name,
+        content: editedTask.content,
+        tags: editedTask.tags,
+        dueDate: editedTask.dueDate,
+        priority: editedTask.priority,
+        subTasks: "",
+        assignees: "",
+        status: editedTask.status,
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Task not found");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data); // Optional: Log the response from the server
+        toast("Task Updated");
+        dispatch({ type: "SET_TASKS", param: updatedTasks });
+        console.log(state.tasks);
+        setIsEditing(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    };
   let priorityColor;
 
   
@@ -80,7 +115,7 @@ const Task = ({ task,handleSave }) => {
       {isEditing ? (
         <TaskForm
           initialTask={task}
-          handleSubmit={handleSaveTask}
+          handleSubmit={handleSave}
           onClose={toggleEdit}
         />
       ) : (
