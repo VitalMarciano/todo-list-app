@@ -29,6 +29,7 @@ const ListTasks = () => {
   const statuses = ["todo", "inprogress", "closed"];
 
   return (
+    <div className="fixed top-48">
     <div className="flex gap-16">
       {statuses.map((status, index) => (
         <Section
@@ -39,6 +40,7 @@ const ListTasks = () => {
           closed={closed}
         />
       ))}
+    </div>
     </div>
   );
 };
