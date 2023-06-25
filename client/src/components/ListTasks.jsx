@@ -1,29 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Section from "./Section";
 import Context from "../utils/context";
+import { fetchTasks } from "../utils/lib";
 
-
-const ListTasks = (props) => {
+const ListTasks = () => {
   const [todos, setTodos] = useState([]);
   const [inProgress, setInProgress] = useState([]);
   const [closed, setClosed] = useState([]);
   const { state, dispatch } = React.useContext(Context);
-  
+
+  const handleFetchTasks = async () => {
+    await fetchTasks(state.user, dispatch);
+  };
   useEffect(() => {
-
-    props.fetchTasks();
-
+    handleFetchTasks();
   }, []);
 
   useEffect(() => {
-   
-    const allTasks = state.tasks || [];
-    console.log(allTasks);
+    const allTasks = [...state.tasks] || [];
     const fTodos = allTasks.filter((task) => task.status === "todo");
     const fInProgress = allTasks.filter((task) => task.status === "inprogress");
     const fClosed = allTasks.filter((task) => task.status === "closed");
-
-
     setTodos(fTodos);
     setInProgress(fInProgress);
     setClosed(fClosed);

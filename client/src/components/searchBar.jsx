@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Context from "../utils/context";
-import ListTasks from "./ListTasks";
+
 const SearchBar = () => {
-    const { state, dispatch } = React.useContext(Context);
+  const { state, dispatch } = React.useContext(Context);
     
     const [searchQuery, setSearchQuery] = useState("");
   
