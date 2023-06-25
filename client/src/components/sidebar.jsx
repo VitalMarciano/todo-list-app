@@ -73,7 +73,7 @@ export default function Sidebar() {
                       />
                     </svg>
 
-                    <button onClick={() => handleNavigate("/")}>Home</button>
+                    <button onClick={() => dispatch({ type: 'SET_VIEW', param: 'home' })}>Home</button>
                   </a>
                 </li>
                 <li className="rounded-sm">

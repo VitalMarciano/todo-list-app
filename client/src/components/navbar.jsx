@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Context from "../utils/context";
-
+import SearchBar from "./searchBar";
 const Navbar = () => {
   const { state, dispatch } = useContext(Context);
 
@@ -10,17 +10,21 @@ const Navbar = () => {
 
   return (
     <div className={`navbar ${state.darkMode ? "dark" : ""}`}>
-      <div className={`navbar bg-slate-300 h-14 dark:bg-slate-800 fixed w-full z-20 top-0 left-0`}>
+      <div
+        className={`navbar  md:justify-between md:flex-row bg-slate-300 h-14 dark:bg-slate-800 fixed w-full z-20 top-0 left-0 `}
+      >
         <div className="flex justify-center">
           <div className="text-lg font-bold text-gray-800 dark:text-white">
             Welcome!
           </div>
         </div>
-        <div className="flex right-4 items-center cursor-pointer fixed top-4 z-50">
+        <div></div>
+        <SearchBar></SearchBar>
+        <div className="fixed top-4 flex right-4 z-50 cursor-pointer">
           <button onClick={toggleDarkMode}>
             {state.darkMode ? (
               <a
-              className="hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
+                className="hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
                 href="#!"
                 data-hs-theme-click-value="dark"
               >
@@ -37,7 +41,7 @@ const Navbar = () => {
               </a>
             ) : (
               <a
-              className="hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
+                className="hs-dark-mode group flex items-center text-gray-600 hover:text-blue-600 font-medium dark:text-gray-400 dark:hover:text-gray-500"
                 href="#!"
                 data-hs-theme-click-value="light"
               >
