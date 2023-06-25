@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import ChipInputFeild from "./chipInput"
+import ChipInputFeild from "./chipInput";
 const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
   const [showModal, setShowModal] = useState(true); // Initially hide the modal
   const [task, setTask] = useState(
@@ -16,7 +16,6 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
       status: "todo",
     }
   );
-
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -94,7 +93,7 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
               value={task.name}
               onChange={handleInputChange}
             />
-            
+
             <label htmlFor="content" className="formlbl">
               Task Content:
             </label>
@@ -109,8 +108,12 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
             <label htmlFor="tags" className="formlbl">
               Task Tags:
             </label>
-          
-            <ChipInputFeild type={"tags"}task={task} onUpdateTask={handleUpdateTask} ></ChipInputFeild>
+
+            <ChipInputFeild
+              type={"text"}
+              task={task}
+              onUpdateTask={handleUpdateTask}
+            ></ChipInputFeild>
             <label htmlFor="dueDate" className="formlbl">
               Due Date:
             </label>
@@ -138,7 +141,11 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
               <option value="medium">Medium</option>
               <option value="high">High</option>
             </select>
-
+            <ChipInputFeild
+              type={"email"}
+              task={task}
+              onUpdateTask={handleUpdateTask}
+            ></ChipInputFeild>
             <button
               className="bg-cyan-500 rounded-md px-4 h-12 text-white"
               type="submit"

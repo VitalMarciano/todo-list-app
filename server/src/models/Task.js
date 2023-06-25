@@ -9,7 +9,7 @@ const taskSchema = new mongoose.Schema({
   dueDate: { type: String, required: false },
   priority: { type: String, required: false },
   subTasks: { type: String, required: false },
-  assignees: { type: String, required: false },
+  assignees: {type:[String], required: false  },
   status: { type: String, required: true },
 });
 

@@ -1,7 +1,7 @@
 import { useDrag } from "react-dnd";
 import React, { useState, useContext } from "react";
 import toast from "react-hot-toast";
-import TaskForm from "./taskForm";
+import TaskForm from "./TaskForm";
 import Context from "../utils/context";
 
 const Task = ({ task }) => {
@@ -65,8 +65,8 @@ const Task = ({ task }) => {
         tags: editedTask.tags,
         dueDate: editedTask.dueDate,
         priority: editedTask.priority,
-        subTasks: "",
-        assignees: "",
+        subTasks: editedTask.subTasks,
+        assignees: editedTask.assignees,
         status: editedTask.status,
       }),
     })
