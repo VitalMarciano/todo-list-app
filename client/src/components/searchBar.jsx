@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Context from "../utils/context";
-
+import toast from "react-hot-toast";
 const SearchBar = () => {
   const { state, dispatch } = React.useContext(Context);
 
@@ -44,9 +44,14 @@ const SearchBar = () => {
         return searchField.includes(searchQuery.toLowerCase());
       }
     });
-
-    // Dispatch the search results to the context or update the UI accordingly
-    dispatch({ type: "SET_SEARCH_RESULTS", param: searchResults });
+    if (searchResults.length==0) {
+      toast("We couldnt find anything :(");
+      // Dispatch the search results to the context or update the UI accordingly
+     
+    }
+    else{
+      dispatch({ type: "SET_SEARCH_RESULTS", param: searchResults });
+    }
   };
 
   const toggleDropdown = () => {

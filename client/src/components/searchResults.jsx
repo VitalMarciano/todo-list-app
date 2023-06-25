@@ -13,7 +13,7 @@ const SearchResults = () => {
 
   return (
     <div className="flex items-center flex-col justify-center min-h-screen w-1/2 ">
-      <Header text={"text"} bg={"blue"} count={state.ftasks.length} />
+      <Header text={"founded tasks :"} bg={"bg-orange-500"} count={state.ftasks.length} />
       {filteredTasks.map((task) => (
         <Task key={task._id} task={task} handleSave={handleSaveTask} />
       ))}
