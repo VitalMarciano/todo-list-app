@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import Task from "./taskBox";
-import Context from "../utils/context";
-import Header from "./header";
+import Task from "../taskBox";
+import Context from "../../utils/context";
+import Header from "../header";
 const SearchResults = () => {
   const { state } = useContext(Context);
   const filteredTasks = state.ftasks;

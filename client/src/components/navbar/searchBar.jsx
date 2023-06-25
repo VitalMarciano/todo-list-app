@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Context from "../utils/context";
+import Context from "../../utils/context";
 import toast from "react-hot-toast";
 const SearchBar = () => {
   const { state, dispatch } = React.useContext(Context);
