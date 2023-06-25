@@ -19,7 +19,8 @@ const Navbar = () => {
           </div>
         </div>
         <div></div>
-        <SearchBar></SearchBar>
+        {state.user ? <SearchBar></SearchBar> : <></>}
+
         <div className="fixed top-4 flex right-4 z-50 cursor-pointer">
           <button onClick={toggleDarkMode}>
             {state.darkMode ? (
