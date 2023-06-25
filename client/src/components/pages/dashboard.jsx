@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import CreateTask from "../CreateTask";
 import ListTasks from "../ListTasks";
-import Context from "../utils/context";
+import Context from "../../utils/context";
 
 
 const Dashboard = () => {
