@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import Context from "../utils/context";
+import Context from "../../utils/context";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");

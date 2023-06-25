@@ -1,8 +1,8 @@
 
-import Dashboard from "./Dashboard";
-import Login from "./login";
-import SignUp from "./signup";
-import SearchResults from "./searchResults"
+import Dashboard from "./pages/dashboard";
+import Login from "./pages/login";
+import SignUp from "./pages/signup";
+import SearchResults from "./pages/searchResults"
 
 export const pages = {
     home: <Dashboard />,

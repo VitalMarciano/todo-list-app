@@ -1,7 +1,9 @@
-import React, { useContext } from "react";
-import CreateTask from "./CreateTask";
-import ListTasks from "./ListTasks";
+
+import React, { useState } from "react";
+import CreateTask from "../CreateTask";
+import ListTasks from "../ListTasks";
 import Context from "../utils/context";
+
 
 const Dashboard = () => {
   const { state, dispatch } = React.useContext(Context)

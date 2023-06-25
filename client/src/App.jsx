@@ -1,4 +1,4 @@
-import Navbar from "./components/navbar";
+
 import React, { useReducer } from "react";
 import Context from "./utils/context";
 import { initState, reducer } from "./utils/reducer";
