@@ -6,7 +6,7 @@ import Context from "../utils/context";
 
 function LayoutM({ children }) {
   const [collapsed, setSidebarCollapsed] = useState(false);
-  const { state, dispatch } = React.useContext(Context);
+  const { state, dispatch } = useContext(Context);
   return (
     <>
     <div className={`layoutM ${state.darkMode ? "dark" : ""}`}>

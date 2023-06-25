@@ -5,7 +5,7 @@ import Context from "../utils/context";
 export default function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [cookies, setCookies] = useCookies(["access_token"]);
-  const { state, dispatch } = React.useContext(Context);
+  const { state, dispatch } = useContext(Context);
 
   const logout = () => {
     setCookies("access_token", "");

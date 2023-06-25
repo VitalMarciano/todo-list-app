@@ -3,7 +3,7 @@ import Task from "../taskBox";
 import Context from "../../utils/context";
 import Header from "../header";
 const SearchResults = () => {
-  const { state, dispatch } = React.useContext(Context);
+  const { state } = useContext(Context);
   const filteredTasks = state.ftasks;
 
   const handleSaveTask = (editedTask) => {

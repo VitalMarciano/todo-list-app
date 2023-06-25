@@ -1,7 +1,7 @@
 export const initState = {
   view: "login",
   user: null,
-  tasks: [],
+  tasks: null,
   ftasks:null,
   error: "",
   darkMode: false, // Add the darkMode state
@@ -51,4 +51,3 @@ export const reducer = (state = initState, action) => {
       return state;
   }
 };
-
