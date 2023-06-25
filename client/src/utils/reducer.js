@@ -1,5 +1,5 @@
 export const initState = {
-  view: "login",
+  view: "home",
   user: null,
   tasks: [],
   ftasks:null,
@@ -29,7 +29,7 @@ export const reducer = (state = initState, action) => {
         ...state,
         user: null,
         tasks: null,
-        view: "login",
+        view: "home",
       };
     case "SET_ERROR":
       return {

@@ -2,25 +2,17 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import Context from "../../utils/context"
-
-
-
+import Context from "../../utils/context";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [_, setCookies] = useCookies(["access_token"]);
-  const { state, dispatch } = React.useContext(Context)
+  const { state, dispatch } = React.useContext(Context);
+  const onSignUp = () => {
+    dispatch({ type: "SET_VIEW", param: "signup" });
+  };
 
-
-
-  const onSignUp= () =>{
-    
-    dispatch({ type: 'SET_VIEW', param: 'signup' });
-  }
-
-  
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -28,21 +20,21 @@ const Login = () => {
         username,
         password,
       });
-      console.log(response.data['message']);
-      switch (response.data['message']) {
+      console.log(response.data["message"]);
+      switch (response.data["message"]) {
         case "User Doesn't Exists!":
         case "Username or Password is incorrect!":
-          alert(response.data['message']);
+          alert(response.data["message"]);
           break;
         default:
           setCookies("access_token", response.data.token);
           window.localStorage.setItem("userID", response.data.userID);
           //window.location.pathname="/";
-          dispatch({ type: 'SET_USER', param: username });
+          dispatch({ type: "SET_USER", param: username });
           console.log("user");
           console.log(username);
           console.log(state.user);
-          dispatch({ type: 'SET_VIEW', param: 'home' });
+          dispatch({ type: "SET_VIEW", param: "home" });
       }
     } catch (error) {
       console.error(error);
@@ -52,17 +44,13 @@ const Login = () => {
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden dark:bg-gray-900">
       <div className="formbg">
-        <h1 className="formtitle">
-          Sign in
-        </h1>
+        <h1 className="formtitle">Sign in</h1>
         <form className="mt-6" onSubmit={onSubmit}>
           <div className="mb-2">
             <label
               htmlFor="email"
               className="block text-sm font-semibold text-gray-800 dark:text-gray-300"
-            >
-              
-            </label>
+            ></label>
             <input
               className="forminput"
               type="text"
@@ -73,7 +61,7 @@ const Login = () => {
           </div>
           <div className="mb-2">
             <input
-               className="forminput"
+              className="forminput"
               type="password"
               placeholder="Password"
               value={password}
