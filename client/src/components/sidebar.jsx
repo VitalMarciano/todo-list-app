@@ -1,15 +1,15 @@
 import React, { useContext, useState } from "react";
 import { useCookies } from "react-cookie";
 import Context from "../utils/context";
-
+import checkedIcon from "../assets/checked.svg";
 export default function Sidebar() {
-  const [showSidebar, setShowSidebar] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(true);
   const [cookies, setCookies] = useCookies(["access_token"]);
   const { state, dispatch } = React.useContext(Context);
 
   const logout = () => {
     setCookies("access_token", "");
-    window.localStorage.removeItem("userID");
+
     dispatch({ type: "EXIT", param: null });
   };
   const handleNavigate = (route) => {
@@ -28,14 +28,14 @@ export default function Sidebar() {
           width="40"
           height="40"
         >
-          <rect width="100" height="10"  rx="7" ry="7"></rect>
+          <rect width="100" height="10" rx="7" ry="7"></rect>
           <rect y="30" width="100" height="10" rx="7" ry="7"></rect>
           <rect y="60" width="100" height="10" rx="7" ry="7"></rect>
         </svg>
       )}
 
       <div
-        className={`flex top-9 left-0 fixed h-full z-60 duration-200 ease-in-out  ${
+        className={`flex  left-0 fixed h-full z-20 duration-200 ease-in-out  ${
           showSidebar ? "translate-x-0" : "-translate-x-full overflow-hidden"
         }`}
       >
@@ -49,6 +49,15 @@ export default function Sidebar() {
           <div className="space-y-3">
             <div className="flex items-center">
               <h2 className="text-xl font-bold dark:text-white">To-Do-App</h2>
+              <button
+                onClick={() => dispatch({ type: "SET_VIEW", param: "home" })}
+              >
+                <img
+                  src={checkedIcon}
+                  alt="Checked Icon"
+                  className="icon h-6 w-auto pl-1"
+                />
+              </button>
             </div>
             <div className="flex-1">
               <ul className="pt-2 pb-4 space-y-1 text-sm">
@@ -72,14 +81,17 @@ export default function Sidebar() {
                       />
                     </svg>
 
-                    <button onClick={() => dispatch({ type: 'SET_VIEW', param: 'home' })}>Home</button>
+                    <button
+                      onClick={() =>
+                        dispatch({ type: "SET_VIEW", param: "home" })
+                      }
+                    >
+                      Home
+                    </button>
                   </a>
                 </li>
                 <li className="rounded-sm">
-                  <a
-                    href="#"
-                    className="sidebarlbl"
-                  >
+                  <a href="#" className="sidebarlbl">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="w-6 h-6"
@@ -98,10 +110,7 @@ export default function Sidebar() {
                   </a>
                 </li>
                 <li className="rounded-sm">
-                  <a
-                    href="#"
-                    className="sidebarlbl"
-                  >
+                  <a href="#" className="sidebarlbl">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="w-6 h-6"
@@ -125,10 +134,7 @@ export default function Sidebar() {
                   </a>
                 </li>
                 <li className="rounded-sm">
-                  <a
-                    href="#"
-                    className="sidebarlbl"
-                  >
+                  <a href="#" className="sidebarlbl">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="w-6 h-6"
