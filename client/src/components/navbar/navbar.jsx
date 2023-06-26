@@ -29,7 +29,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="flex justify-end items-center mt-2 space-x-2 pr-20 z-50 cursor-pointer">
+        <div className="flex justify-end items-center mt-2 space-x-2 pr-20  cursor-pointer">
           {state.user ? <SearchBar small /> : <></>}
         </div>
         <div className="top-4 flex right-4 z-50 cursor-pointer">
