@@ -4,7 +4,7 @@ import Header from "./header";
 import Task from "./taskBox";
 import toast from "react-hot-toast";
 import Context from "../utils/context";
-import { fetchTasks } from "../utils/lib";
+import { fetchTasks, updateTask } from "../utils/lib";
 
 const Section = ({ status, todos, inProgress, closed }) => {
   const { state, dispatch } = React.useContext(Context);
@@ -32,44 +32,19 @@ const Section = ({ status, todos, inProgress, closed }) => {
   }
   // handle save task
   const handleSave = async (editedTask) => {
-    await fetch(`http://localhost:3001/tasks`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        _id: editedTask._id,
-        username: editedTask.username,
-        name: editedTask.name,
-        content: editedTask.content,
-        tags: editedTask.tags,
-        dueDate: editedTask.dueDate,
-        priority: editedTask.priority,
-        subTasks: editedTask.subTasks,
-        assignees: editedTask.assignees,
-        status: editedTask.status,
-      }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Task not found");
-        }
-        return response.json();
-      })
-      .then(async (data) => {
-        await fetchTasks(state.user, dispatch);
-        toast.success("Task Updated");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      await updateTask(editedTask, state, dispatch);
+      toast.success("Task Updated");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const addItemToSection = (task) => {
+  const addItemToSection = async (task) => {
     const taskToAdd = { ...task, status: status };
-    handleSave(taskToAdd);
+    await handleSave(taskToAdd);
+    //await fetchTasks(state.user, dispatch);
   };
-
   return (
     <div
       ref={drop}

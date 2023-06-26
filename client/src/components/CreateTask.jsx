@@ -48,10 +48,12 @@ const CreateTask = () => {
   return (
     <>
       <button
-        className="bg-blue-500 hover:bg-blue-600 text-white rounded-full w-14 h-14 fixed bottom-4 right-4 flex items-center justify-center shadow-lg transition-transform duration-300 transform hover:scale-110"
+        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold gap-2 rounded-md w-auto px-3 py-3  flex items-center justify-center shadow-lg transition-transform duration-300 transform hover:scale-110"
         onClick={toggleModal}
       >
-        <svg
+
+         Add Task
+         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
           fill="none"
