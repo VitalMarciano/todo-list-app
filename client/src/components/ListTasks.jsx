@@ -30,7 +30,7 @@ const ListTasks = () => {
 
   return (
     
-    <div className="flex gap-16 m-36 z-0">
+    <div className="flex gap-16  z-0">
       {statuses.map((status, index) => (
         <Section
           key={index}
