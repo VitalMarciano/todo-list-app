@@ -15,6 +15,7 @@ export default function Sidebar() {
   };
   const handleNavigate = (route) => {
     dispatch({ type: "SET_VIEW", param: route });
+
   };
   return (
     <>
@@ -51,7 +52,7 @@ export default function Sidebar() {
             <div className="flex items-center">
               <h2 className="text-xl font-bold dark:text-white">To-Do-App</h2>
               <button
-                onClick={() => dispatch({ type: "SET_VIEW", param: "home" })}
+                onClick={()=> handleNavigate("home")}
               >
                 <img
                   src={checkedIcon}
@@ -84,9 +85,8 @@ export default function Sidebar() {
                     </svg>
 
                     <button
-                      onClick={() =>
-                        dispatch({ type: "SET_VIEW", param: "home" })
-                      }
+                      onClick={()=> handleNavigate("home")}
+                        
                     >
                       Home
                     </button>
