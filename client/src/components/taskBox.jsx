@@ -120,9 +120,9 @@ const Task = ({ task }) => {
         />
       ) : (
         <>
-          <p>{task.name}</p>
+          <p className="block font-medium dark:text-slate-200">{task.name}</p>
           <p>
-            <span className="inline-flex items-baseline">
+            <span className="inline-flex items-baseline ">
               {task.tags ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
