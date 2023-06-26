@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Sidebar from "./sidebar";
+import Sidebarr from "./sidebarr";
 import Navbarr from "./navbar/navbar";
 import { useContext } from "react";
 import Context from "../utils/context";
@@ -14,7 +15,8 @@ function LayoutM({ children }) {
       <div className="flex flex-row relative flex-min-h-screen ">
       {state.user ? (
    
-        <Sidebar></Sidebar>):
+   <><Sidebar></Sidebar><Sidebarr></Sidebarr></>)
+        :
         (<></>)
         }
         <div className="flex flex-1 flex-col bg-slate-100 dark:bg-slate-900 ">
