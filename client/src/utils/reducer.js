@@ -2,7 +2,7 @@ export const initState = {
   view: "home",
   user: null,
   tasks: [],
-  ftasks:null,
+  ftasks:[],
   error: "",
   darkMode: false, // Add the darkMode state
 };
@@ -23,7 +23,9 @@ export const reducer = (state = initState, action) => {
       return {
         ...state,
         tasks: action.param,
+        
       };
+
     case "EXIT":
       return {
         ...state,
@@ -41,11 +43,11 @@ export const reducer = (state = initState, action) => {
         ...state,
         darkMode: !state.darkMode,
       };
-    case "SET_SEARCH_RESULTS":
+    case "SET_FTASKS":
       return{
         ...state,
         ftasks: action.param,
-        view: "searchResults",
+       
       }
     default:
       return state;

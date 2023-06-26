@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import toast from "react-hot-toast";
 import TaskForm from "./TaskForm";
 import Context from "../utils/context";
+import  updateTask  from "../utils/lib";
 
 const Task = ({ task }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -48,45 +49,15 @@ const Task = ({ task }) => {
     setIsEditing(true);
   };
 
-  const handleSave = (editedTask) => {
-    const prevTasks = [...state.tasks];
-    const updatedTasks = prevTasks.map((t) =>
-      t._id === editedTask._id ? editedTask : t
-    );
-    fetch(`http://localhost:3001/tasks`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        _id: editedTask._id,
-        username: editedTask.username,
-        name: editedTask.name,
-        content: editedTask.content,
-        tags: editedTask.tags,
-        dueDate: editedTask.dueDate,
-        priority: editedTask.priority,
-        subTasks: editedTask.subTasks,
-        assignees: editedTask.assignees,
-        status: editedTask.status,
-      }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Task not found");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data); // Optional: Log the response from the server
-        toast("Task Updated");
-        dispatch({ type: "SET_TASKS", param: updatedTasks });
-        console.log(state.tasks);
-        setIsEditing(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+
+  const handleSave = async (editedTask) => {
+    try {
+      await updateTask(editedTask, state, dispatch);
+      setIsEditing(false);
+      toast.success("Task Updated");
+    } catch (error) {
+      console.log(error);
+    }
   };
   let priorityColor;
 
@@ -128,18 +99,18 @@ const Task = ({ task }) => {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="currentColor"
-                  class="w-3 h-3"
+                  className="w-3 h-3"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                     d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"
                   />
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                     d="M6 6h.008v.008H6V6z"
                   />
                 </svg>
@@ -155,13 +126,13 @@ const Task = ({ task }) => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
-                class="w-3 h-3"
+                className="w-3 h-3"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                   d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
                 />
               </svg>

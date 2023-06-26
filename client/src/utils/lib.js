@@ -1,43 +1,57 @@
+import toast from "react-hot-toast";
 
 export const fetchTasks = async (username, dispatch) => {
-    try {
-      const response = await fetch(`http://localhost:3001/tasks/${username}`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch tasks");
-      }
-      const data = await response.json();
-
-      dispatch({ type: "SET_TASKS", param: data });
-      
-       
-    } catch (err) {
-      console.log(err);
+  try {
+    const response = await fetch(`http://localhost:3001/tasks/${username}`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch tasks");
     }
-  };
+    const data = await response.json();
 
-  export const createTask = async (taskData) => {
-    try {
-      const { state, dispatch } = React.useContext(Context);
-  
-      const response = await fetch("http://localhost:3001/tasks", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(taskData),
-      });
-  
+    dispatch({ type: "SET_TASKS", param: data });
+  } catch (err) {
+    console.log(err);
+  }
+};
+export const updateTask = (editedTask, state, dispatch) => {
+  const prevTasks = [...state.tasks];
+  const updatedTasks = prevTasks.map((t) =>
+    t._id === editedTask._id ? editedTask : t
+  );
+
+  fetch(`http://localhost:3001/tasks`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      _id: editedTask._id,
+      username: editedTask.username,
+      name: editedTask.name,
+      content: editedTask.content,
+      tags: editedTask.tags,
+      dueDate: editedTask.dueDate,
+      priority: editedTask.priority,
+      subTasks: editedTask.subTasks,
+      assignees: editedTask.assignees,
+      status: editedTask.status,
+    }),
+  })
+    .then((response) => {
       if (!response.ok) {
-        throw new Error("Request failed with status " + response.status);
+        throw new Error("Task not found");
       }
-  
-      toast.success("Task Created");
-      await fetchTasks(state.user, dispatch); // Fetch tasks again to update UI
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to create task");
-      throw error; // Propagate the error to the caller
-    }
-  };
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data); // Optional: Log the response from the server
+      fetchTasks(state.user, dispatch);
 
+      console.log(state.tasks);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
+export default updateTask;

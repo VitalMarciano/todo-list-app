@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useCookies } from "react-cookie";
 import Context from "../utils/context";
 import checkedIcon from "../assets/checked.svg";
+import CreateTask from "./CreateTask";
 export default function Sidebar() {
   const [showSidebar, setShowSidebar] = useState(true);
   const [cookies, setCookies] = useCookies(["access_token"]);
@@ -14,6 +15,7 @@ export default function Sidebar() {
   };
   const handleNavigate = (route) => {
     dispatch({ type: "SET_VIEW", param: route });
+
   };
   return (
     <>
@@ -50,7 +52,7 @@ export default function Sidebar() {
             <div className="flex items-center">
               <h2 className="text-xl font-bold dark:text-white">To-Do-App</h2>
               <button
-                onClick={() => dispatch({ type: "SET_VIEW", param: "home" })}
+                onClick={()=> handleNavigate("home")}
               >
                 <img
                   src={checkedIcon}
@@ -58,12 +60,13 @@ export default function Sidebar() {
                   className="icon h-6 w-auto pl-1"
                 />
               </button>
+              
             </div>
             <div className="flex-1">
               <ul className="pt-2 pb-4 space-y-1 text-sm">
                 <li className="rounded-sm">
                   <a
-                    href="/components/pages/dashboard.jsx"
+                    href="#"
                     className="sidebarlbl"
                   >
                     <svg
@@ -82,9 +85,8 @@ export default function Sidebar() {
                     </svg>
 
                     <button
-                      onClick={() =>
-                        dispatch({ type: "SET_VIEW", param: "home" })
-                      }
+                      onClick={()=> handleNavigate("home")}
+                        
                     >
                       Home
                     </button>
@@ -134,7 +136,12 @@ export default function Sidebar() {
                   </a>
                 </li>
                 <li className="rounded-sm">
+                <CreateTask></CreateTask>
+                </li>
+                <li className="rounded-sm place-self-end">
+                  
                   <a href="#" className="sidebarlbl">
+                  <button className="inline-flex gap-3 " onClick={logout}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="w-6 h-6"
@@ -149,7 +156,7 @@ export default function Sidebar() {
                         d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
                       />
                     </svg>
-                    <button onClick={logout}>Logout</button>
+                    Logout</button>
                   </a>
                 </li>
               </ul>
