@@ -13,20 +13,28 @@ const Navbar = () => {
   return (
     <div className={`navbar ${state.darkMode ? "dark" : ""}`}>
       <div
-        className={`navbar  md:justify-between md:flex-row bg-slate-300 h-14 dark:bg-slate-800 fixed w-full z-20 top-0 left-0 `}
+        className={`navbar md:justify-between md:flex-row inline-flex items-baseline bg-slate-300 h-14 dark:bg-slate-800 fixed w-full z-20 top-0 left-0 `}
       >
-        <button className="top-2 left-2" onClick={() => dispatch({ type: 'SET_VIEW', param: 'home' })}>
-          <img src={checkedIcon} alt="Checked Icon" className="icon h-6 w-auto" />
+        <button
+          className="top-2 left-2"
+          onClick={() => dispatch({ type: "SET_VIEW", param: "home" })}
+        >
+          <img
+            src={checkedIcon}
+            alt="Checked Icon"
+            className="icon h-6 w-auto"
+          />
         </button>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center items-center">
           <div className="text-lg font-bold text-gray-800 dark:text-white">
             Welcome!
           </div>
         </div>
-        <div></div>
-        {state.user ? <SearchBar></SearchBar> : <></>}
 
+        <div className="flex justify-end items-center mt-2 space-x-2 pr-20 z-50 cursor-pointer">
+          {state.user ? <SearchBar small /> : <></>}
+        </div>
         <div className="fixed top-4 flex right-4 z-50 cursor-pointer">
           <button onClick={toggleDarkMode}>
             {state.darkMode ? (
