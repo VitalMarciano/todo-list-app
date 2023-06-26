@@ -63,16 +63,16 @@ const Task = ({ task }) => {
 
   switch (task.priority) {
     case "low":
-      priorityColor = "bg-emerald-200 dark:bg-emerald-500 ";
+      priorityColor = "bg-emerald-400 dark:bg-emerald-500 ";
       break;
     case "medium":
-      priorityColor = "bg-amber-200 dark:bg-amber-500";
+      priorityColor = "bg-amber-400 dark:bg-amber-500";
       break;
     case "high":
-      priorityColor = "bg-rose-200 dark:bg-rose-500";
+      priorityColor = "bg-rose-400 dark:bg-rose-500";
       break;
     default:
-      priorityColor = "bg-slate-200 dark:bg-slate-500";
+      priorityColor = "bg-slate-400 dark:bg-slate-500";
   }
 
   return (
@@ -81,7 +81,7 @@ const Task = ({ task }) => {
       ref={drag}
       className={`relative p-4 mt-8 shadow-md rounded-md  ${
         isDragging ? "opacity-25" : "opacity-100"
-      } cursor-grab ${priorityColor} dark:text-slate-100`}
+      } cursor-grab bg-slate-200 dark:bg-slate-500 dark:text-slate-100`}
     >
       {isEditing ? (
         <TaskForm
@@ -91,6 +91,7 @@ const Task = ({ task }) => {
         />
       ) : (
         <>
+    
           <p className="block font-medium dark:text-slate-200">{task.name}</p>
           <p>
             <span className="inline-flex items-baseline ">
@@ -139,7 +140,8 @@ const Task = ({ task }) => {
               {task.dueDate}
             </span>
           </p>
-          <p>{task.priority}</p>
+          
+          <div className={`flex items-center gap-2 ${priorityColor} text-white font-semibold m-1 py-1 px-3 rounded-full w-fit `}>{task.priority}</div>
           <button
             className="absolute bottom-1 right-1 text-slate-400"
             onClick={() => handleRemove(task._id)}
@@ -178,7 +180,9 @@ const Task = ({ task }) => {
               />
             </svg>
           </button>
+    
         </>
+        
       )}
     </div>
   );

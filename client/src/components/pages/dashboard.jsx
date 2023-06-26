@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className=" flex   justify-center items-start mt-10 min-h-screen">
+      <div className=" flex   justify-center items-start mt-20 min-h-screen">
 
         <ListTasks />
         <div className="object-cover z-auto fixed right-4 bottom-4">

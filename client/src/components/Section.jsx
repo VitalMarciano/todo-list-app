@@ -17,17 +17,17 @@ const Section = ({ status, todos, inProgress, closed }) => {
   }));
 
   let text = "Todo";
-  let bg = "bg-blue-500";
+  let bg = "bg-blue-500 dark:bg-blue-700";
   let tasksToMap = todos;
 
   if (status === "inprogress") {
     text = "In Progress";
-    bg = "bg-purple-500";
+    bg = "bg-purple-500 dark:bg-purple-700";
     tasksToMap = inProgress;
   }
   if (status === "closed") {
     text = "Closed";
-    bg = "bg-green-500";
+    bg = "bg-green-500 dark:bg-green-700";
     tasksToMap = closed;
   }
   // handle save task

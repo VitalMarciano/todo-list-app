@@ -17,7 +17,8 @@ const ListTasks = () => {
   }, []);
 
   useEffect(() => {
-    const allTasks = state.ftasks.length > 0 ? [...state.ftasks] : [...state.tasks] || [];
+    const allTasks =
+      state.ftasks.length > 0 ? [...state.ftasks] : [...state.tasks] || [];
     const fTodos = allTasks.filter((task) => task.status === "todo");
     const fInProgress = allTasks.filter((task) => task.status === "inprogress");
     const fClosed = allTasks.filter((task) => task.status === "closed");
@@ -29,8 +30,14 @@ const ListTasks = () => {
   const statuses = ["todo", "inprogress", "closed"];
 
   return (
-    
+    <div>
+    <div className=" justify-items-center mb-12">
+    <h1 className=" font-bold text-lg dark:text-slate-200">
+      {todos.length + inProgress.length + closed.length} tasks
+    </h1>
+  </div>
     <div className="flex gap-16  z-0">
+     
       {statuses.map((status, index) => (
         <Section
           key={index}
@@ -41,7 +48,7 @@ const ListTasks = () => {
         />
       ))}
     </div>
-
+    </div>
   );
 };
 

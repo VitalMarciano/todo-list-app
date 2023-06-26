@@ -49,7 +49,7 @@ const CreateTask = () => {
   return (
     <>
       <button
-        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold gap-2 rounded-md w-auto px-3 py-3  flex items-center justify-center shadow-lg transition-transform duration-300 transform hover:scale-110"
+        className="bg-blue-500 hover:bg-blue-600 text-slate-100 font-semibold gap-2 rounded-md w-auto px-3 py-3  flex items-center justify-center shadow-lg transition-transform duration-300 transform hover:scale-110 dark:bg-blue-700"
         onClick={toggleModal}
       >
 

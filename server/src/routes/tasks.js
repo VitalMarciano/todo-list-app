@@ -16,8 +16,7 @@ router.post("/", async(req, res) => {
     assignees: req.body.assignees,
     status: req.body.status,
   });
-  console.log("this is task:");
-  console.log(task);
+
   try {
     const result = await task.save();
     console.log("this is res:");
@@ -31,16 +30,12 @@ router.post("/", async(req, res) => {
 
 // update task
 router.put("/", async (req, res) => {
-  console.log("UPDAETEED");
-  console.log(req.body);
   const id=req.body._id;
   const task = await TaskModel.findByIdAndUpdate({_id: id} , req.body);
-  console.log(task);
   try {
-    console.log("TRY TO SAVE");
+    
     await task.save();
     res.status(201).json({ message: "task updated!" });
-    console.log("save?");
   } catch (err) {
     res.status(500).json(err);
   }
@@ -60,8 +55,9 @@ router.get("/:username", async (req, res) => {
 
 // Get task by user mail 
 router.get("/:email", async (req, res) => {
+
   try {
-    const tasks = await TaskModel.find({ 'assignees': req.params.email });
+    const tasks = await TaskModel.find({ assignees: req.params.email });
     console.log(tasks);
     res.json(tasks);
   } catch (err) {
