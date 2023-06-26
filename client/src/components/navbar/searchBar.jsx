@@ -48,7 +48,7 @@ const SearchBar = () => {
       toast("We couldnt find anything :(");
       // Dispatch the search results to the context or update the UI accordingly
     } else {
-      dispatch({ type: "SET_TASKS", param: searchResults });
+      dispatch({ type: "SET_FTASKS", param: searchResults });
       
     }
   };

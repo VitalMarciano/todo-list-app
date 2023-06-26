@@ -17,20 +17,20 @@ const ListTasks = () => {
   }, []);
 
   useEffect(() => {
-    const allTasks = [...state.tasks] || [];
+    const allTasks = state.ftasks.length > 0 ? [...state.ftasks] : [...state.tasks] || [];
     const fTodos = allTasks.filter((task) => task.status === "todo");
     const fInProgress = allTasks.filter((task) => task.status === "inprogress");
     const fClosed = allTasks.filter((task) => task.status === "closed");
     setTodos(fTodos);
     setInProgress(fInProgress);
     setClosed(fClosed);
-  }, [state.tasks]);
+  }, [state.tasks, state.ftasks]);
 
   const statuses = ["todo", "inprogress", "closed"];
 
   return (
     
-    <div className="flex gap-16 m-48">
+    <div className="flex gap-16 m-36">
       {statuses.map((status, index) => (
         <Section
           key={index}

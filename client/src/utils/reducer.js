@@ -30,7 +30,8 @@ export const reducer = (state = initState, action) => {
       return {
         ...state,
         user: null,
-        tasks: null,
+        tasks: [],
+        ftasks: [],
         view: "home",
       };
     case "SET_ERROR":

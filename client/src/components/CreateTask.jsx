@@ -32,9 +32,10 @@ const CreateTask = () => {
       if (!response.ok) {
         throw new Error("Request failed with status " + response.status);
       }
+      await fetchTasks(state.user, dispatch);
       toast.success("Task Created");
       setShowModal(false); // Hide the modal after submitting
-      await fetchTasks(state.user, dispatch);
+      
     } catch (error) {
       // Handle any errors that occur during the request
       console.error(error);

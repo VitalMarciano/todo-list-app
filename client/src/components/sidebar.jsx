@@ -52,7 +52,7 @@ export default function Sidebar() {
             <div className="flex items-center">
               <h2 className="text-xl font-bold dark:text-white">To-Do-App</h2>
               <button
-                onClick={()=> handleNavigate("home")}
+                onClick={()=> dispatch({ type: "SET_VIEW", param: "Home" })}
               >
                 <img
                   src={checkedIcon}
