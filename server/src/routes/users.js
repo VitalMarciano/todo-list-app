@@ -6,7 +6,7 @@ import { UserModel } from "../models/Users.js";
 const router = express.Router();
 
 router.post("/register", async (req, res) => {
-  const { username, password, name, lastName, birthday } = req.body;
+  const { username, password, name, lastName, email, birthday } = req.body;
   const user = await UserModel.findOne({ username }); // we can also write findOne({username}) cause the key=val
 
   if (user) {
@@ -20,6 +20,7 @@ router.post("/register", async (req, res) => {
     password: hashedPassword,
     name,
     lastName,
+    email,
     birthday,
   });
   await newUser.save();

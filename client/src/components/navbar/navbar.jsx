@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
     <div className={`navbar ${state.darkMode ? "dark" : ""}`}>
       <div
-        className={`navbar md:justify-between md:flex-row inline-flex items-baseline h-14 fixed w-full z-10 top-0 left-0 `}
+        className={`navbar md:justify-between md:flex-row inline-flex items-baseline h-14  w-full z-10 top-0 left-0 `}
       >
         <div className="flex justify-start items-center ml-4 mt-4 cursor-pointer">
           
@@ -32,7 +32,7 @@ const Navbar = () => {
         <div className="flex justify-end items-center mt-2 space-x-2 pr-20 z-50 cursor-pointer">
           {state.user ? <SearchBar small /> : <></>}
         </div>
-        <div className="fixed top-4 flex right-4 z-50 cursor-pointer">
+        <div className="top-4 flex right-4 z-50 cursor-pointer">
           <button onClick={toggleDarkMode}>
             {state.darkMode ? (
               <a

@@ -9,6 +9,7 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
   const [showModal, setShowModal] = useState(false); // Initially hide the modal
   const { state, dispatch } = React.useContext(Context);
@@ -24,6 +25,7 @@ const SignUp = () => {
       password,
       name,
       lastName,
+      email,
       birthday,
     };
 
@@ -33,12 +35,13 @@ const SignUp = () => {
         password,
         name,
         lastName,
+        email,
         birthday,
       });
       if (response.data["message"] == "User already exists!") {
         alert(response.data["message"]);
       } else {
-        dispatch({ type: "SET_VIEW", param: "login" });
+        dispatch({ type: "SET_VIEW", param: "home" });
         alert("Registration completed! Now login.");
       }
     } catch (error) {
@@ -113,6 +116,18 @@ const SignUp = () => {
               placeholder="Last Name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
+            />
+          </div>
+          <div className="mb-2">
+            <label className="formlbl" htmlFor="email">
+              Email:
+            </label>
+            <input
+              className="forminput"
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="mb-2">
