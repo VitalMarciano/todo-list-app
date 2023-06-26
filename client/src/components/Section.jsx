@@ -45,8 +45,8 @@ const Section = ({ status, todos, inProgress, closed }) => {
         tags: editedTask.tags,
         dueDate: editedTask.dueDate,
         priority: editedTask.priority,
-        subTasks: "",
-        assignees: "",
+        subTasks: editedTask.subTasks,
+        assignees: editedTask.assignees,
         status: editedTask.status,
       }),
     })

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { fetchTasks } from "../utils/lib";
-import TaskForm from "./taskForm";
+import TaskForm from "./TaskForm";
 import Context from "../utils/context";
 
 const CreateTask = () => {
@@ -24,7 +24,7 @@ const CreateTask = () => {
           dueDate: task.dueDate,
           priority: task.priority,
           subTasks: "",
-          assignees: "",
+          assignees: task.assignees,
           status: task.status,
         }),
       });
