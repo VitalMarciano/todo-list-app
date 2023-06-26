@@ -79,7 +79,7 @@ const Task = ({ task }) => {
     <div
       key={task._id}
       ref={drag}
-      className={`relative p-4 mt-8 shadow-md rounded-md ${
+      className={`relative p-4 mt-8 shadow-md rounded-md z-20 ${
         isDragging ? "opacity-25" : "opacity-100"
       } cursor-grab ${priorityColor} dark:text-slate-100`}
     >

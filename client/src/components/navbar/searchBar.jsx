@@ -44,12 +44,13 @@ const SearchBar = () => {
         return searchField.includes(searchQuery.toLowerCase());
       }
     });
-    if (searchResults.length == 0) {
-      toast("We couldnt find anything :(");
+    if (searchResults.length > 0) {
+      dispatch({ type: "SET_FTASKS", param: searchResults });
       // Dispatch the search results to the context or update the UI accordingly
     } else {
-      dispatch({ type: "SET_FTASKS", param: searchResults });
       
+      toast("We couldnt find anything :(");
+      dispatch({ type: "SET_FTASKS", param: state.tasks });
     }
   };
 

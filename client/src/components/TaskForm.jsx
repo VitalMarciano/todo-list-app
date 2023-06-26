@@ -59,8 +59,8 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 ">
-      <div className="relative bg-slate-300 p-4 rounded-md dark:bg-gray-800">
+    <div className="fixed inset-0 flex  items-center justify-center z-10 ">
+      <div className="relative bg-slate-300 w-50% max-w-50% p-4 rounded-md dark:bg-gray-800">
         <button
           className="absolute top-1 right-2 text-black px-4 py-2 rounded-full mt-4  "
           onClick={handleClose}
