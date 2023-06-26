@@ -98,7 +98,7 @@ const ChipInputField = ({ type, task, onUpdateTask }) => {
           tagChips.map((chip, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 bg-blue-500 text-white py-1 px-2 rounded-full"
+              className="flex items-center gap-2 bg-blue-500 text-white m-1 py-1 px-2 rounded-full"
             >
               <span className="whitespace-nowrap">{chip}</span>
               <button
