@@ -46,7 +46,7 @@ const SignUp = () => {
     }
   };
   const onCancel = () => {
-    dispatch({ type: "SET_VIEW", param: "login" });
+    dispatch({ type: "SET_VIEW", param: "home" });
   };
 
   return (

@@ -44,12 +44,10 @@ const SearchBar = () => {
         return searchField.includes(searchQuery.toLowerCase());
       }
     });
-    if (searchResults.length==0) {
+    if (searchResults.length == 0) {
       toast("We couldnt find anything :(");
       // Dispatch the search results to the context or update the UI accordingly
-     
-    }
-    else{
+    } else {
       dispatch({ type: "SET_SEARCH_RESULTS", param: searchResults });
     }
   };
@@ -59,7 +57,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
+    
       <form>
         <div className="flex">
           <div className="relative">
@@ -127,17 +125,30 @@ const SearchBar = () => {
             value={searchQuery}
             onChange={handleInputChange}
           />
-
+          
           <button
-            className="flex-shrink-0 px-4 py-2 ml-4 text-sm font-medium text-white bg-blue-500 border border-transparent rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="flex-shrink-0 px-4 py-2 ml-1 text-sm font-medium text-white bg-blue-500 border border-transparent rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             type="submit"
             onClick={handleSearch}
           >
-            Search
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
           </button>
         </div>
       </form>
-    </div>
+
   );
 };
 

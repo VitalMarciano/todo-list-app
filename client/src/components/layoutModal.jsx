@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Sidebar from "./sidebar";
-import Navbar from "./navbar/navbar";
+import Navbarr from "./navbar/navbar";
 import { useContext } from "react";
 import Context from "../utils/context";
 import checkedIcon from "../assets/checked.svg";
@@ -18,7 +18,7 @@ function LayoutM({ children }) {
         (<></>)
         }
         <div className="flex flex-1 flex-col bg-slate-100 dark:bg-slate-900 ">
-          <Navbar></Navbar>
+          <Navbarr></Navbarr>
           {children}
           <footer className="justify-center bg-slate-100 text-center dark:bg-slate-800 lg:text-left">
             <div className="p-4 text-center flex justify-center text-slate-700 dark:text-slate-200">
