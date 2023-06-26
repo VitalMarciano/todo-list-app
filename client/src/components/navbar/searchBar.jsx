@@ -44,7 +44,7 @@ const SearchBar = () => {
         return searchField.includes(searchQuery.toLowerCase());
       }
     });
-    if (searchResults.length > 0) {
+    if (searchResults.length > 0 && searchQuery.length>0) {
       dispatch({ type: "SET_FTASKS", param: searchResults });
       // Dispatch the search results to the context or update the UI accordingly
     } else {
