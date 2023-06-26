@@ -15,7 +15,7 @@ const Navbar = () => {
       <div
         className={`navbar  md:justify-between md:flex-row bg-slate-300 h-14 dark:bg-slate-800 fixed w-full z-20 top-0 left-0 `}
       >
-        <button className="top-2 left-2">
+        <button className="top-2 left-2" onClick={() => dispatch({ type: 'SET_VIEW', param: 'home' })}>
           <img src={checkedIcon} alt="Checked Icon" className="icon h-6 w-auto" />
         </button>
 
