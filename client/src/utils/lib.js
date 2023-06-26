@@ -15,10 +15,15 @@ export const fetchTasks = async (username, dispatch) => {
 };
 export const updateTask = (editedTask, state, dispatch) => {
   const prevTasks = [...state.tasks];
+  const prevfTasks = [...state.ftasks];
+  console.log(state.ftasks);
+
   const updatedTasks = prevTasks.map((t) =>
     t._id === editedTask._id ? editedTask : t
   );
-
+  const updatedfTasks = prevfTasks.map((t) =>
+    t._id === editedTask._id ? editedTask : t
+  );
   fetch(`http://localhost:3001/tasks`, {
     method: "PUT",
     headers: {
@@ -45,7 +50,13 @@ export const updateTask = (editedTask, state, dispatch) => {
     })
     .then((data) => {
       console.log(data); // Optional: Log the response from the server
-      fetchTasks(state.user, dispatch);
+      if (state.ftasks.length > 0) {
+       // dispatch({ type: "SET_TASKS", param: updatedTasks });
+        dispatch({ type: "SET_FTASKS", param: updatedfTasks });
+        console.log(state.ftasks);
+      } else {
+        fetchTasks(state.user, dispatch);
+      }
 
       console.log(state.tasks);
     })
