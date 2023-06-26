@@ -6,12 +6,13 @@ const ChipInputField = ({ type, task, onUpdateTask }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (e) => {
-    const { value } = e.target || {};
+    const { value } = e.target;
     setInputValue(value);
   };
 
-  const handleAddChip = () => {
-    if (inputValue.trim() !== "") {
+  const handleKeyDown = (e) => {
+    if (e.key === " " && inputValue.trim() !== "") {
+      e.preventDefault();
       if (type === "email") {
         const updatedEmails = [...emailChips, inputValue.trim()];
         setEmailChips(updatedEmails);
@@ -26,9 +27,7 @@ const ChipInputField = ({ type, task, onUpdateTask }) => {
   };
 
   const handleRemoveEmailChip = (index) => {
-    const updatedEmails = emailChips.filter(
-      (_, chipIndex) => chipIndex !== index
-    );
+    const updatedEmails = emailChips.filter((_, chipIndex) => chipIndex !== index);
     setEmailChips(updatedEmails);
     onUpdateTask({ ...task, assignees: updatedEmails });
   };
@@ -41,12 +40,21 @@ const ChipInputField = ({ type, task, onUpdateTask }) => {
 
   return (
     <div className="flex flex-col space-y-2">
-      {type === "email" && (
-        <div className="flex items-center space-x-2">
-          {emailChips.map((chip, index) => (
+   
+        <input
+          type={type}
+          value={inputValue}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+          placeholder={type === "email" ? "Enter an email address" : "Enter a tag"}
+          className="taskforminput h-10 mb-2"
+        />
+      <div className="flex flex-wrap overflow-y-auto h-12">
+        {type === "email" ? (
+          emailChips.map((chip, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 bg-blue-500 text-white py-1 px-2 rounded-full"
+              className="flex items-center gap-2 bg-blue-500 m-1 text-white py-1 px-2 rounded-full"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +74,7 @@ const ChipInputField = ({ type, task, onUpdateTask }) => {
               <button
                 type="button"
                 onClick={() => handleRemoveEmailChip(index)}
-                className="bg-blue-200 text-blue-700 rounded-full p-1 hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-red-400"
+                className="bg-blue-200 text-blue-700 rounded-full p-1 m-1 hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-red-400"
               >
                 <svg
                   className="h-3 w-3"
@@ -84,27 +92,10 @@ const ChipInputField = ({ type, task, onUpdateTask }) => {
                 </svg>
               </button>
             </div>
-          ))}
-          <input
-            type={type}
-            value={inputValue}
-            onChange={handleInputChange}
-            placeholder="Enter an email address"
-            className="taskforminput h-10"
-          />
-          <button
-            type="button"
-            onClick={handleAddChip}
-            className="bg-blue-500 text-white rounded p-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          >
-            Add Email
-          </button>
-        </div>
-      )}
-
-      {type === "text" && (
-        <div className="flex items-center space-x-2">
-          {tagChips.map((chip, index) => (
+          ))
+        ) : (
+        
+          tagChips.map((chip, index) => (
             <div
               key={index}
               className="flex items-center gap-2 bg-blue-500 text-white py-1 px-2 rounded-full"
@@ -130,24 +121,14 @@ const ChipInputField = ({ type, task, onUpdateTask }) => {
                   />
                 </svg>
               </button>
+       
             </div>
-          ))}
-          <input
-            type={type}
-            value={inputValue}
-            onChange={handleInputChange}
-            placeholder="Enter a tag"
-            className="taskforminput h-10"
-          />
-          <button
-            type="button"
-            onClick={handleAddChip}
-            className="bg-blue-500 text-white rounded p-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          >
-            Add Tag
-          </button>
-        </div>
-      )}
+
+          ))
+        )}
+        
+      </div>
+
     </div>
   );
 };

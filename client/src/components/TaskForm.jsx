@@ -59,8 +59,8 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex  items-center justify-center z-10 ">
-      <div className="relative bg-slate-300 w-50% max-w-50% p-4 rounded-md dark:bg-gray-800">
+    <div className="fixed inset-0 flex  items-center justify-center z-50 overflow-auto">
+      <div className="relative  bg-slate-300 w-1/2 p-4 rounded-md dark:bg-gray-800">
         <button
           className="absolute top-1 right-2 text-black px-4 py-2 rounded-full mt-4  "
           onClick={handleClose}
@@ -80,8 +80,8 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
             />
           </svg>
         </button>
-        <form onSubmit={handleFormSubmit} className="flex justify-start w-200">
-          <div className="flex flex-col space-y-2  bg-white bg-opacity-30 p-10 rounded-md dark:bg-opacity-10">
+        <form onSubmit={handleFormSubmit} className="flex justify-center ">
+          <div className="flex flex-col space-y-2 w-full bg-white bg-opacity-30 p-10 rounded-md dark:bg-opacity-10">
             <label htmlFor="name" className="formlbl">
               Task Name:
             </label>
@@ -100,7 +100,7 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
             <textarea
               id="content"
               name="content"
-              className="taskforminput h-32"
+              className="taskforminput h-20"
               value={task.content}
               onChange={handleInputChange}
             />
