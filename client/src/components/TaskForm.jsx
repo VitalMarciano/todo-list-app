@@ -141,6 +141,9 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
               <option value="medium">Medium</option>
               <option value="high">High</option>
             </select>
+            <label htmlFor="assignees" className="formlbl">
+              assignees:
+            </label>
             <ChipInputFeild
               type={"email"}
               task={task}
