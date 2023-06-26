@@ -6,8 +6,13 @@ export const fetchTasks = async (username, dispatch) => {
     if (!response.ok) {
       throw new Error("Failed to fetch tasks");
     }
-    const data = await response.json();
-
+    const data1 = await response.json();
+    const response2 = await fetch(`http://localhost:3001/tasks/${username}`);
+    if (!response2.ok) {
+      throw new Error("Failed to fetch tasks");
+    }
+    const data2 = await response2.json();
+    const data= data1.concat(data2);
     dispatch({ type: "SET_TASKS", param: data });
   } catch (err) {
     console.log(err);

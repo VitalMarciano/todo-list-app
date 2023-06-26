@@ -58,6 +58,20 @@ router.get("/:username", async (req, res) => {
   }
 });
 
+// Get task by user mail 
+router.get("/:email", async (req, res) => {
+  try {
+    const tasks = await TaskModel.find({ 'assignees': req.params.email });
+    console.log(tasks);
+    res.json(tasks);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
+
 // Delete task by ID
 router.delete("/:id", async (req, res) => {
   try {
