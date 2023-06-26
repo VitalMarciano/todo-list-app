@@ -6,6 +6,7 @@ import Context from "../utils/context";
 
 const Task = ({ task }) => {
   const [isEditing, setIsEditing] = useState(false);
+
   const { state, dispatch } = React.useContext(Context);
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "task",
@@ -58,7 +59,7 @@ const Task = ({ task }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        _id: editedTask._id,  
+        _id: editedTask._id,
         username: editedTask.username,
         name: editedTask.name,
         content: editedTask.content,
@@ -86,10 +87,9 @@ const Task = ({ task }) => {
       .catch((error) => {
         console.log(error);
       });
-    };
+  };
   let priorityColor;
 
-  
   switch (task.priority) {
     case "low":
       priorityColor = "bg-emerald-200 dark:bg-emerald-500 ";
@@ -121,9 +121,53 @@ const Task = ({ task }) => {
       ) : (
         <>
           <p>{task.name}</p>
-          <p>{task.content}</p>
-          <p>{task.tags}</p>
-          <p>{task.dueDate}</p>
+          <p>
+            <span className="inline-flex items-baseline">
+              {task.tags ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-3 h-3"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 6h.008v.008H6V6z"
+                  />
+                </svg>
+              ) : (
+                <></>
+              )}
+              {task.tags}
+            </span>
+          </p>
+          <p>
+            <span className="inline-flex items-baseline ">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-3 h-3"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
+                />
+              </svg>
+              {task.dueDate}
+            </span>
+          </p>
           <p>{task.priority}</p>
           <button
             className="absolute bottom-1 right-1 text-slate-400"

@@ -48,13 +48,13 @@ export default function Sidebar() {
         <div className="flex flex-col h-screen p-6 bg-white shadow w-60 dark:bg-slate-800">
           <div className="space-y-3">
             <div className="flex items-center">
-              <h2 className="text-xl font-bold dark:text-white">Dashboard</h2>
+              <h2 className="text-xl font-bold dark:text-white">To-Do-App</h2>
             </div>
             <div className="flex-1">
               <ul className="pt-2 pb-4 space-y-1 text-sm">
                 <li className="rounded-sm">
                   <a
-                    href="#"
+                    href="/components/pages/dashboard.jsx"
                     className="sidebarlbl"
                   >
                     <svg

@@ -23,7 +23,7 @@ const CreateTask = () => {
           tags: task.tags,
           dueDate: task.dueDate,
           priority: task.priority,
-          subTasks: "",
+          subTasks: [],
           assignees: task.assignees,
           status: task.status,
         }),
