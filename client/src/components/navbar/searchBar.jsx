@@ -49,7 +49,7 @@ const SearchBar = () => {
       // Dispatch the search results to the context or update the UI accordingly
     } else {
       
-      toast("We couldnt find anything :(");
+      toast.error("We couldnt find anything :(");
       dispatch({ type: "SET_FTASKS", param: [] });
       dispatch({ type: "SET_VIEW", param: "home" });
     }

@@ -48,7 +48,7 @@ export default function Sidebar() {
         >
           x
         </button>
-        <div className="flex flex-col h-screen p-6 bg-white shadow w-60 dark:bg-slate-800">
+        <div className="flex flex-col h-screen p-6 bg-slate-200 shadow w-60 dark:bg-slate-800">
           <div className="space-y-3">
             <div className="flex items-center">
               <h2 className="text-xl font-bold dark:text-white">To-Do-App</h2>
@@ -64,7 +64,10 @@ export default function Sidebar() {
               
             </div>
             <div className="flex-1">
-              <ul className="pt-2 pb-4 space-y-1 text-sm">
+              <ul className="pt-2 pb-4 space-y-3 text-sm">
+              <li className="rounded-sm my-7">
+                <CreateTask></CreateTask>
+                </li>
                 <li className="rounded-sm">
                   <a
                     href="#"
@@ -136,10 +139,8 @@ export default function Sidebar() {
                     <span>Settings</span>
                   </a>
                 </li>
-                <li className="rounded-sm">
-                <CreateTask></CreateTask>
-                </li>
-                <li className="rounded-sm place-self-end">
+
+                <li className="rounded-sm fixed bottom-10">
                   
                   <a href="#" className="sidebarlbl">
                   <button className="inline-flex gap-3 " onClick={logout}>
