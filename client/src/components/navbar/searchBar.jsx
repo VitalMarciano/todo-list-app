@@ -50,7 +50,8 @@ const SearchBar = () => {
     } else {
       
       toast("We couldnt find anything :(");
-      dispatch({ type: "SET_FTASKS", param: state.tasks });
+      dispatch({ type: "SET_FTASKS", param: [] });
+      dispatch({ type: "SET_VIEW", param: "home" });
     }
   };
 
