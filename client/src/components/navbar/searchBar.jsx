@@ -122,7 +122,7 @@ const SearchBar = () => {
           </div>
 
           <input
-            className="flex-1 w-full px-4 py-2 text-sm border border-gray-300 rounded-r-lg dark:bg-gray-800 dark:border-gray-600 focus:ring-4 focus:outline-none focus:ring-blue-500 dark:focus:ring-gray-700"
+            className="flex-1 w-auto px-4 py-2 text-sm border border-gray-300 rounded-r-lg dark:bg-gray-800 dark:border-gray-600 focus:ring-4 focus:outline-none focus:ring-blue-500 dark:focus:ring-gray-700 "
             type="text"
             placeholder="Search"
             value={searchQuery}
@@ -130,7 +130,7 @@ const SearchBar = () => {
           />
           
           <button
-            className="flex-shrink-0 px-4 py-2 ml-1 text-sm font-medium text-white bg-blue-500 border border-transparent rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="flex-1 px-4 py-2 ml-1 text-sm font-medium text-white bg-blue-500 border border-transparent rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             type="submit"
             onClick={handleSearch}
           >
