@@ -4,10 +4,10 @@ import Context from "../utils/context";
 import checkedIcon from "../assets/checked.svg";
 import CreateTask from "./CreateTask";
 export default function Sidebar() {
-  const [showSidebar, setShowSidebar] = useState(true);
+  
   const [cookies, setCookies] = useCookies(["access_token"]);
   const { state, dispatch } = React.useContext(Context);
-
+  const [showSidebar, setShowSidebar] = useState(state.desktop);
   const logout = () => {
     setCookies("access_token", "");
 
@@ -64,9 +64,9 @@ export default function Sidebar() {
               
             </div>
             <div className="flex-1">
-              <ul className="pt-2 pb-4 space-y-3 text-sm">
+              <ul className="pt-2 pb-4 space-y-3 text-md">
               <li className="rounded-sm my-7">
-                <CreateTask></CreateTask>
+                <CreateTask text={"Add Task"}></CreateTask>
                 </li>
                 <li className="rounded-sm">
                   <a

@@ -14,7 +14,7 @@ const Dashboard = () => {
 
         <ListTasks />
         <div className="object-cover z-auto fixed end-64 bottom-5">
-        <CreateTask />
+        <CreateTask text={""} />
         </div>
       </div>
     </>

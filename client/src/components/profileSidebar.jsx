@@ -1,19 +1,15 @@
 import React, { useContext, useState } from "react";
-import { useCookies } from "react-cookie";
 import Context from "../utils/context";
 import checkedIcon from "../assets/biggie.png";
 import ProgressBar from "./progressbar";
-
+import Darkmode from "./toggleDarkmode"
+ 
 export default function Sidebarr() {
-  const [showSidebar, setShowSidebar] = useState(true);
-  const [cookies, setCookies] = useCookies(["access_token"]);
+  
+
+
   const { state, dispatch } = React.useContext(Context);
-
-  const logout = () => {
-    setCookies("access_token", "");
-
-    dispatch({ type: "EXIT", param: null });
-  };
+  const [showSidebar, setShowSidebar] = useState(state.desktop);
 
   return (
     <>
@@ -25,11 +21,9 @@ export default function Sidebarr() {
         alt="Checked Icon"
         className=" fixed icon h-10 w-auto pr-1 top-5 right-4"
       />
-
       )}
-
       <div
-        className={`flex  right-2 fixed h-full z-0 duration-200 ease-in-out  ${
+        className={`flex  right-2 fixed h-full z-0 duration-200 ease-in-oute w-72 flex-col ${
           showSidebar ? "-translate-x-0" : " translate-x-full  overflow-hidden"
         }`}
       >
@@ -39,24 +33,25 @@ export default function Sidebarr() {
         >
           x
         </button>
-        <div className="flex flex-col h-screen p-6 bg-slate-200 shadow w-60 dark:bg-slate-800">
+        <div className="flex flex-col h-screen p-6 bg-slate-200 shadow dark:bg-slate-800">
           <div className="space-y-3">
             <div className="flex items-center">
               <img
                 src={checkedIcon}
                 alt="Checked Icon"
-                className="icon h-10 w-auto pl-1"
+                className="icon h-10 w-auto pl-1 border-2"
               />
               <h2 className="text-xl font-bold dark:text-white">
-                Hi, {state.user}!
+                 Hi, {state.user}!
               </h2>
             </div>
             <div className="flex-1">
-              <ul className="pt-2 pb-4 space-y-3 text-sm  dark:text-white">
-                  <ProgressBar text={"Todo"}></ProgressBar>
+              <ul className="pt-2 pb-4 space-y-3 text-md dark:text-white">
+                 <li><ProgressBar text={"Task status"}></ProgressBar></li> 
+                 <li> <Darkmode></Darkmode></li>
               </ul>
+              
             </div>
-           
           </div>
         </div>
       </div>

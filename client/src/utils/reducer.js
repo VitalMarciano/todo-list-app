@@ -5,9 +5,13 @@ export const initState = {
   ftasks: [],
   error: "",
   darkMode: false, // Add the darkMode state
+<<<<<<< Updated upstream
   todoCount: 0,
   inProgressCount: 0,
   closedCount: 0,
+=======
+  desktop: (window.innerWidth>640) ? (true):(false),
+>>>>>>> Stashed changes
 };
 
 export const reducer = (state = initState, action) => {

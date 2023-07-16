@@ -4,7 +4,7 @@ import { fetchTasks } from "../utils/lib";
 import TaskForm from "./TaskForm";
 import Context from "../utils/context";
 
-const CreateTask = () => {
+const CreateTask = ({text}) => {
   const [showModal, setShowModal] = useState(false); // Initially hide the modal
   const { state, dispatch } = React.useContext(Context);
 
@@ -53,7 +53,7 @@ const CreateTask = () => {
         onClick={toggleModal}
       >
 
-         Add Task
+         {text}
          <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"

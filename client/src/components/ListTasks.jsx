@@ -33,13 +33,13 @@ const ListTasks = () => {
   const statuses = ["todo", "inprogress", "closed"];
 
   return (
-    <div>
+    <div >
     <div className=" justify-items-center mb-12">
     <h1 className=" font-bold text-lg dark:text-slate-200">
       {todos.length + inProgress.length + closed.length} tasks
     </h1>
   </div>
-    <div className="flex gap-16  z-0">
+    <div className="flex gap-16  z-0 grow mx-2 max-sm:flex-col ">
      
       {statuses.map((status, index) => (
         <Section

@@ -14,8 +14,8 @@ const ProgressBar = ({text}) => {
   }, [state.todoCount,state.inProgressCount,state.closedCount]);
   
   return (
-    <div className="relative pt-1 mx-1">
-      <div className="mb-1 text-base font-medium text-indigo-700 dark:text-indigo-500">
+    <div className="relative pt-1 gap-y-1">
+      <div className="">
         {text}
       </div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Sidebar from "./sidebar";
-import Sidebarr from "./sidebarr";
+import Sidebarr from "./profileSidebar";
 import Navbarr from "./navbar/navbar";
 import { useContext } from "react";
 import Context from "../utils/context";
@@ -9,13 +9,14 @@ import checkedIcon from "../assets/checked.svg";
 function LayoutM({ children }) {
   const [collapsed, setSidebarCollapsed] = useState(false);
   const { state, dispatch } = React.useContext(Context);
+
   return (
     <>
     <div className={`layoutM ${state.darkMode ? "dark" : ""}`}>
-      <div className="flex flex-row relative flex-min-h-screen ">
+      <div className="flex flex-row relative flex-min-h-screen  ">
       {state.user ? (
    
-   <><Sidebar></Sidebar><Sidebarr></Sidebarr></>)
+   <><Sidebar ></Sidebar><Sidebarr ></Sidebarr></>)
         :
         (<></>)
         }
