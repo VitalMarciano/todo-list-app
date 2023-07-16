@@ -29,7 +29,7 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
-  const user = await UserModel.findOne({ username }); // we can also write findOne({username}) cause the key=val
+  const user = await UserModel.findOne({ username }); 
 
   if (!user) {
     return res.json({ message: "User Doesn't Exists!" });
@@ -41,6 +41,19 @@ router.post("/login", async (req, res) => {
 
   const token = jwt.sign({ id: user._id }, "secret");
   res.json({ token, userID: user._id });
+});
+
+
+// Get email by username
+router.get("/:username", async (req, res) => {
+  try {
+    const email = await TaskModel.find({ username: req.params.username });
+    console.log(tasks);
+    res.json(email);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 export { router as userRouter };

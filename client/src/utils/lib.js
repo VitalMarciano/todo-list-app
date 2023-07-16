@@ -1,18 +1,23 @@
-import toast from "react-hot-toast";
+
 
 export const fetchTasks = async (username, dispatch) => {
+  let email;
   try {
-    const response = await fetch(`http://localhost:3001/tasks/${username}`);
+    const response1 = await fetch(`http://localhost:3001/auth/${username}`);
+    if (!response1.ok) {
+      throw new Error("Failed to find user");
+    }
+    const data = await response1.json();
+    email=data;
+  } catch (err) {
+    console.log(err);
+  }
+  try {
+    const response = await fetch(`http://localhost:3001/tasks/${username,email}`);
     if (!response.ok) {
       throw new Error("Failed to fetch tasks");
     }
-    const data1 = await response.json();
-    const response2 = await fetch(`http://localhost:3001/tasks/${username}`);
-    if (!response2.ok) {
-      throw new Error("Failed to fetch tasks");
-    }
-    const data2 = await response2.json();
-    const data= data1.concat(data2);
+    const data = await response.json();
     dispatch({ type: "SET_TASKS", param: data });
   } catch (err) {
     console.log(err);
