@@ -13,7 +13,7 @@ function LayoutM({ children }) {
   return (
     <>
     <div className={`layoutM ${state.darkMode ? "dark" : ""}`}>
-      <div className="flex flex-row relative flex-min-h-screen  ">
+      <div className="flex flex-row relative min-h-screen ">
       {state.user ? (
    
    <><Sidebar ></Sidebar><Sidebarr ></Sidebarr></>)

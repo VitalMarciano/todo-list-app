@@ -13,7 +13,7 @@ const Dashboard = () => {
       <div className=" flex   justify-center items-start mt-20 min-h-screen">
 
         <ListTasks />
-        <div className="object-cover z-auto fixed end-64 bottom-5">
+        <div className=" relative place-self-end object-cover z-auto mb-11 ">
         <CreateTask text={""} />
         </div>
       </div>
