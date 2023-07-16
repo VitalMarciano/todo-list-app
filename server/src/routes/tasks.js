@@ -45,7 +45,7 @@ router.put("/", async (req, res) => {
 router.get("/:username", async (req, res) => {
   try {
     const tasks = await TaskModel.find({ username: req.params.username });
-    const tasks2 = await TaskModel.find({$or: [{assignees: "biggie"}, {assignees: "asad@gmail.com"}]});
+    const tasks2 = await TaskModel.find({assignees: req.params.username});
     console.log(tasks);
     const data= tasks.concat(tasks2);
     res.json(data);
@@ -54,8 +54,6 @@ router.get("/:username", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
 
 
 

@@ -2,9 +2,12 @@ export const initState = {
   view: "home",
   user: null,
   tasks: [],
-  ftasks:[],
+  ftasks: [],
   error: "",
   darkMode: false, // Add the darkMode state
+  todoCount: 0,
+  inProgressCount: 0,
+  closedCount: 0,
 };
 
 export const reducer = (state = initState, action) => {
@@ -23,9 +26,7 @@ export const reducer = (state = initState, action) => {
       return {
         ...state,
         tasks: action.param,
-        
       };
-
     case "EXIT":
       return {
         ...state,
@@ -45,13 +46,27 @@ export const reducer = (state = initState, action) => {
         darkMode: !state.darkMode,
       };
     case "SET_FTASKS":
-      return{
+      return {
         ...state,
         ftasks: action.param,
-       
-      }
+      };
+    case "SET_TODO":
+      return {
+        ...state,
+        todoCount: action.param,
+      };
+      case "SET_INPROGRESS":
+      return {
+        ...state,
+        inProgressCount: action.param,
+      };
+      case "SET_CLOSED":
+      return {
+        ...state,
+        closedCount: action.param,
+      };
+
     default:
       return state;
   }
 };
-

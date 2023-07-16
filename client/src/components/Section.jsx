@@ -24,11 +24,13 @@ const Section = ({ status, todos, inProgress, closed }) => {
     text = "In Progress";
     bg = "bg-purple-500 dark:bg-purple-700";
     tasksToMap = inProgress;
+    
   }
   if (status === "closed") {
     text = "Closed";
     bg = "bg-green-500 dark:bg-green-700";
     tasksToMap = closed;
+    
   }
   // handle save task
   const handleSave = async (editedTask) => {

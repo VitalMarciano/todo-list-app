@@ -45,11 +45,11 @@ router.post("/login", async (req, res) => {
 
 
 // Get email by username
-router.get("/:username", async (req, res) => {
+router.get("/:username/:email", async (req, res) => {
+  const username=req.params.username;
   try {
-    const email = await TaskModel.find({ username: req.params.username });
-    console.log(tasks);
-    res.json(email);
+    const user = await UserModel.findOne({ username });
+    res.json(user.email);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

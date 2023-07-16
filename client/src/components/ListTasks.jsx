@@ -25,6 +25,9 @@ const ListTasks = () => {
     setTodos(fTodos);
     setInProgress(fInProgress);
     setClosed(fClosed);
+    dispatch({ type: "SET_TODO", param: fTodos.length });
+    dispatch({ type: "SET_INPROGRESS", param: fInProgress.length });
+    dispatch({ type: "SET_CLOSED", param: fClosed.length });
   }, [state.tasks, state.ftasks]);
 
   const statuses = ["todo", "inprogress", "closed"];

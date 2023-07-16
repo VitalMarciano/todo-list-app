@@ -1,19 +1,8 @@
 
-
 export const fetchTasks = async (username, dispatch) => {
-  let email;
+
   try {
-    const response1 = await fetch(`http://localhost:3001/auth/${username}`);
-    if (!response1.ok) {
-      throw new Error("Failed to find user");
-    }
-    const data = await response1.json();
-    email=data;
-  } catch (err) {
-    console.log(err);
-  }
-  try {
-    const response = await fetch(`http://localhost:3001/tasks/${username,email}`);
+    const response = await fetch(`http://localhost:3001/tasks/${username}`);
     if (!response.ok) {
       throw new Error("Failed to fetch tasks");
     }
