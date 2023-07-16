@@ -5,12 +5,10 @@ export const initState = {
   ftasks: [],
   error: "",
   darkMode: false, // Add the darkMode state
-
   todoCount: 0,
   inProgressCount: 0,
   closedCount: 0,
-
-  desktop: (window.innerWidth>640) ? (true):(false),
+  desktop: (window.innerWidth>640) ? true: false,
 
 };
 

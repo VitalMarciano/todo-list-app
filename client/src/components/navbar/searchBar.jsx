@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Context from "../../utils/context";
 import toast from "react-hot-toast";
-const SearchBar = () => {
+const SearchBar = ({setShow}) => {
   const { state, dispatch } = React.useContext(Context);
   
   const [selectedCategory, setSelectedCategory] = useState("tags");
@@ -19,7 +19,9 @@ const SearchBar = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-
+    if (!state.desktop){
+      setShow();
+    }
     // Perform the search based on the selected category and search query
     const searchResults = state.tasks.filter((task) => {
       let searchField;

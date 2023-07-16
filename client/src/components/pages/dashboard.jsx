@@ -9,15 +9,14 @@ const Dashboard = () => {
   const { state, dispatch } = React.useContext(Context)
 
   return (
-    <>
-      <div className=" flex   justify-center items-start mt-20 min-h-screen">
-
+    <div className="relative">
+      <div className="flex justify-center items-start mt-20 min-h-screen">
         <ListTasks />
-        <div className=" relative place-self-end object-cover z-auto mb-11 ">
-        <CreateTask text={""} />
-        </div>
       </div>
-    </>
+      <div className="fixed bottom-4 right-80 max-sm:right-8">
+        <CreateTask text={""} />
+      </div>
+    </div>
   );
 };
 
