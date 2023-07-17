@@ -46,7 +46,7 @@ router.get("/:username", async (req, res) => {
   try {
     const tasks = await TaskModel.find({ username: req.params.username });
     const tasks2 = await TaskModel.find({assignees: req.params.username});
-    console.log(tasks);
+  
     const data= tasks.concat(tasks2);
     res.json(data);
   } catch (err) {
