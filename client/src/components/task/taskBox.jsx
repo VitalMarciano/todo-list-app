@@ -24,7 +24,7 @@ const Task = ({ task }) => {
     toast("Task Removed");
     console.log(id);
     // Send DELETE request to delete task from the database
-    fetch(`http://localhost:3001/tasks/${id}`, {
+    fetch(`https://todo-app-api-6dof.onrender.com/tasks/${id}`, {
       method: "DELETE",
     })
       .then((response) => {

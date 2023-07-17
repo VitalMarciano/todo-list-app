@@ -2,7 +2,7 @@
 export const fetchTasks = async (username, dispatch) => {
 
   try {
-    const response = await fetch(`http://localhost:3001/tasks/${username}`);
+    const response = await fetch(`https://todo-app-api-6dof.onrender.com/tasks/${username}`);
     if (!response.ok) {
       throw new Error("Failed to fetch tasks");
     }
@@ -24,7 +24,7 @@ export const updateTask = (editedTask, state, dispatch) => {
   const updatedfTasks = prevfTasks.map((t) =>
     t._id === editedTask._id ? editedTask : t
   );
-  fetch(`http://localhost:3001/tasks`, {
+  fetch(`https://todo-app-api-6dof.onrender.com/tasks`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -67,7 +67,7 @@ export const updateTask = (editedTask, state, dispatch) => {
 
 export const saveTask = async (task, state, dispatch) => {
   try {
-    const response = await fetch("http://localhost:3001/tasks", {
+    const response = await fetch("https://todo-app-api-6dof.onrender.com/tasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -30,7 +30,7 @@ const SignUp = () => {
     };
 
     try {
-      const response = await axios.post("http://localhost:3001/auth/register", {
+      const response = await axios.post("https://todo-app-api-6dof.onrender.com/auth/register", {
         username,
         password,
         name,
