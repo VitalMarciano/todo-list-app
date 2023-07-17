@@ -88,20 +88,20 @@ Visit http://localhost:3000 in your web browser to access the Todoapp.
 
 ## Technologies
 ### Client Side
--React.js
--Tailwind CSS
--Toast
--React DnD Provider (React Draggable)
--Axios
--React Router DOM
--React Cookies
+- React.js
+- Tailwind CSS
+- Toast
+- React DnD Provider (React Draggable)
+- Axios
+- React Router DOM
+- React Cookies
 
 ### Server Side
--Express.js
--MongoDB with Mongoose
--Bcrypt
--JSON Web Tokens (JWT)
-...
+- Express.js
+- MongoDB with Mongoose
+- Bcrypt
+- JSON Web Tokens (JWT)
+
 ## Contributing
 Contributions to the Todoapp are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
 
