@@ -4,7 +4,7 @@ import checkedIcon from "../assets/biggie.png";
 import ProgressBar from "./progressbar";
 import Darkmode from "./toggleDarkmode"
  
-export default function Sidebarr() {
+export default function ProfileSidebar() {
   const { state, dispatch } = React.useContext(Context);
   const [showSidebar, setShowSidebar] = useState(state.desktop);
 
