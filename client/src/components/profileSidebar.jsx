@@ -5,9 +5,6 @@ import ProgressBar from "./progressbar";
 import Darkmode from "./toggleDarkmode"
  
 export default function Sidebarr() {
-  
-
-
   const { state, dispatch } = React.useContext(Context);
   const [showSidebar, setShowSidebar] = useState(state.desktop);
 
@@ -19,7 +16,7 @@ export default function Sidebarr() {
         <img
         src={checkedIcon} onClick={() => setShowSidebar(!showSidebar)}
         alt="Checked Icon"
-        className=" fixed icon h-10 w-auto pr-1 top-5 right-4 mr-5"
+        className=" fixed icon h-10 w-auto pr-1 top-5 right-4 mr-5 z-50"
       />
       )}
       <div

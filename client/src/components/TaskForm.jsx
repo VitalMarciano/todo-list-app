@@ -6,6 +6,7 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
   const [task, setTask] = useState(
     initialTask || {
       _id: null,
+      username:"",
       name: "",
       content: "",
       tags: [],
@@ -33,6 +34,7 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
 
     setTask({
       _id: "",
+      username:"",
       name: "",
       content: "",
       tags: [],
