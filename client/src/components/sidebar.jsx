@@ -3,26 +3,52 @@ import { useCookies } from "react-cookie";
 import Context from "../utils/context";
 import checkedIcon from "../assets/checked.svg";
 import CreateTask from "./CreateTask";
+import TaskForm from "./TaskForm";
+import { saveTask } from "../utils/lib";
 export default function Sidebar() {
-  
   const [cookies, setCookies] = useCookies(["access_token"]);
   const { state, dispatch } = React.useContext(Context);
   const [showSidebar, setShowSidebar] = useState(state.desktop);
+  const [showModal, setShowModal] = useState(false); // Initially hide the modal
+
+  const toggleModal = () => {
+    dispatch({ type: "SET_VIEW", param: "home" });
+    setShowModal((prev) => !prev); // Toggle the visibility of the modal
+  };
   const logout = () => {
     setCookies("access_token", "");
 
     dispatch({ type: "EXIT", param: null });
   };
+  const handleSubmit = async (task) => {
+    try {
+      await saveTask(task, state, dispatch);
+      toggleModal();
+      toast.success("Task Created");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handleNavigate = (route) => {
     dispatch({ type: "SET_VIEW", param: route });
     dispatch({ type: "SET_FTASKS", param: [] });
-
   };
   return (
     <>
       {showSidebar ? (
-        <></>
+        <>{showModal ? (
+          <TaskForm
+          
+            handleSubmit={handleSubmit}
+            onClose={toggleModal}
+          />
+        ) : (
+          <>
+            
+          </>
+        )}</>
       ) : (
+       
         <svg
           onClick={() => setShowSidebar(!showSidebar)}
           className="fixed  z-30 flex items-center cursor-pointer rigth-5 ml-4 top-3"
@@ -52,27 +78,40 @@ export default function Sidebar() {
           <div className="space-y-3">
             <div className="flex items-center">
               <h2 className="text-xl font-bold dark:text-white">To-Do-App</h2>
-              <button
-                onClick={()=> handleNavigate("home")}
-              >
+              <button onClick={() => handleNavigate("home")}>
                 <img
                   src={checkedIcon}
                   alt="Checked Icon"
                   className="icon h-6 w-auto pl-1"
                 />
               </button>
-              
             </div>
             <div className="flex-1">
               <ul className="pt-2 pb-4 space-y-3 text-md">
-              <li className="rounded-sm my-7 ">
-                <CreateTask text={"Add Task"}></CreateTask>
+                <li className="rounded-sm my-7">
+                  <button
+                    className="bg-blue-500 hover:bg-blue-600 text-slate-100 font-semibold gap-2 rounded-md w-auto px-3 py-3  flex items-center justify-center shadow-lg transition-transform duration-300 transform hover:scale-110 dark:bg-blue-700"
+                    onClick={toggleModal}
+                  >
+                    Add Task
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M12 4v16m8-8H4"
+                      />
+                    </svg>
+                  </button>
                 </li>
                 <li className="rounded-sm">
-                  <a
-                    href="#"
-                    className="sidebarlbl"
-                  >
+                  <a href="#" className="sidebarlbl">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="w-6 h-6"
@@ -88,12 +127,7 @@ export default function Sidebar() {
                       />
                     </svg>
 
-                    <button
-                     onClick={()=> handleNavigate("home")}
-                        
-                    >
-                      Home
-                    </button>
+                    <button onClick={() => handleNavigate("home")}>Home</button>
                   </a>
                 </li>
                 <li className="rounded-sm">
@@ -141,24 +175,24 @@ export default function Sidebar() {
                 </li>
 
                 <li className="rounded-sm fixed bottom-10">
-                  
                   <a href="#" className="sidebarlbl">
-                  <button className="inline-flex gap-3 " onClick={logout}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-6 h-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                      />
-                    </svg>
-                    Logout</button>
+                    <button className="inline-flex gap-3 " onClick={logout}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-6 h-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                        />
+                      </svg>
+                      Logout
+                    </button>
                   </a>
                 </li>
               </ul>
