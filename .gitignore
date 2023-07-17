@@ -1,2 +1,4 @@
 /todo-list-app/node_modules/
 /server/node_modules/
+package.json
+package-lock.json
