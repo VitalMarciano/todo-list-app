@@ -6,6 +6,7 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
   const [task, setTask] = useState(
     initialTask || {
       _id: null,
+      username:"",
       name: "",
       content: "",
       tags: [],
@@ -33,6 +34,7 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
 
     setTask({
       _id: "",
+      username:"",
       name: "",
       content: "",
       tags: [],
@@ -59,7 +61,7 @@ const TaskForm = ({ initialTask, handleSubmit, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex  items-center justify-center z-50 overflow-auto">
+    <div className="fixed justify-center inset-0 flex  items-center  z-50 overflow-auto backdrop-blur-sm">
       <div className="relative  bg-slate-300 w-1/3 p-4 rounded-md dark:bg-gray-800 max-sm:w-2/3">
         <button
           className="absolute top-1 right-2 text-black px-4 py-2 rounded-full mt-4  "

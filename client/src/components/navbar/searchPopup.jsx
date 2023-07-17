@@ -34,7 +34,7 @@ const SearchPopUp = ({onClose}) => {
       </button>
 
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center h-auto z-50">
+        <div className={`fixed inset-0 flex items-center justify-center h-auto z-50 backdrop-blur-sm`}>
           <div className="relative  bg-slate-300 p-4 rounded-md dark:bg-gray-800">
             <button
               className="relative justify-self-end top-1 text-black px-4 py-2 rounded-full  "

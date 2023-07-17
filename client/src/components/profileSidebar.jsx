@@ -4,10 +4,7 @@ import checkedIcon from "../assets/biggie.png";
 import ProgressBar from "./progressbar";
 import Darkmode from "./toggleDarkmode"
  
-export default function Sidebarr() {
-  
-
-
+export default function ProfileSidebar() {
   const { state, dispatch } = React.useContext(Context);
   const [showSidebar, setShowSidebar] = useState(state.desktop);
 
@@ -19,11 +16,11 @@ export default function Sidebarr() {
         <img
         src={checkedIcon} onClick={() => setShowSidebar(!showSidebar)}
         alt="Checked Icon"
-        className=" fixed icon h-10 w-auto pr-1 top-5 right-4 mr-5"
+        className=" fixed icon h-10 w-auto pr-1 top-5 right-4 mr-5 z-50"
       />
       )}
       <div
-        className={`flex  right-2 fixed z-0 duration-200 ease-in-oute w-72 flex-col ${
+        className={`flex  right-2 fixed z-50 duration-200 ease-in-oute w-72 flex-col ${
           showSidebar ? "-translate-x-0" : " translate-x-full  overflow-hidden"
         }`}
       >
@@ -50,7 +47,6 @@ export default function Sidebarr() {
                  <li><ProgressBar text={"Task status"}></ProgressBar></li> 
                  <li> <Darkmode></Darkmode></li>
               </ul>
-              
             </div>
           </div>
         </div>

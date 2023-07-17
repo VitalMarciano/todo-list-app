@@ -46,7 +46,7 @@ const ChipInputField = ({ type, task, onUpdateTask }) => {
           value={inputValue}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
-          placeholder={type === "email" ? "Enter an email address" : "Enter a tag"}
+          placeholder={type === "email" ? "Enter an user" : "Enter a tag"}
           className="taskforminput h-10 mb-2"
         />
       <div className="flex flex-wrap overflow-y-auto h-12">
