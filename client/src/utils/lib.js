@@ -12,6 +12,7 @@ export const fetchTasks = async (username, dispatch) => {
     console.log(err);
   }
 };
+
 export const updateTask = (editedTask, state, dispatch) => {
   const prevTasks = [...state.tasks];
   const prevfTasks = [...state.ftasks];
@@ -64,4 +65,37 @@ export const updateTask = (editedTask, state, dispatch) => {
     });
 };
 
-export default updateTask;
+export const saveTask = async (task, state, dispatch) => {
+  try {
+    const response = await fetch("http://localhost:3001/tasks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: state.user,
+        name: task.name,
+        content: task.content,
+        tags: task.tags,
+        dueDate: task.dueDate,
+        priority: task.priority,
+        subTasks: [],
+        assignees: task.assignees,
+        status: task.status,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Request failed with status " + response.status);
+    }
+    await fetchTasks(state.user, dispatch);
+    toast.success("Task Created");
+    setShowModal(false); // Hide the modal after submitting
+    
+  } catch (error) {
+    // Handle any errors that occur during the request
+    console.error(error);
+  }
+    
+};
+
