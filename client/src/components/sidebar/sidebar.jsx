@@ -1,10 +1,9 @@
 import React, { useContext, useState } from "react";
 import { useCookies } from "react-cookie";
-import Context from "../utils/context";
-import checkedIcon from "../assets/checked.svg";
-import CreateTask from "./CreateTask";
-import TaskForm from "./TaskForm";
-import { saveTask } from "../utils/lib";
+import Context from "../../utils/context";
+import checkedIcon from "../../assets/checked.svg";
+import TaskForm from "../task/TaskForm";
+import { saveTask } from "../../utils/lib";
 export default function Sidebar() {
   const [cookies, setCookies] = useCookies(["access_token"]);
   const { state, dispatch } = React.useContext(Context);

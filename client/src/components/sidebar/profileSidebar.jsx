@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import Context from "../utils/context";
-import checkedIcon from "../assets/biggie.png";
+import Context from "../../utils/context";
+import checkedIcon from "../../assets/biggie.png";
 import ProgressBar from "./progressbar";
 import Darkmode from "./toggleDarkmode"
  

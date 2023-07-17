@@ -1,10 +1,10 @@
 import { useDrop } from "react-dnd";
 import React, { useEffect } from "react";
-import Header from "./header";
+import Header from "./Header";
 import Task from "./taskBox";
 import toast from "react-hot-toast";
-import Context from "../utils/context";
-import { fetchTasks, updateTask } from "../utils/lib";
+import Context from "../../utils/context";
+import { fetchTasks, updateTask } from "../../utils/lib";
 
 const Section = ({ status, todos, inProgress, closed }) => {
   const { state, dispatch } = React.useContext(Context);

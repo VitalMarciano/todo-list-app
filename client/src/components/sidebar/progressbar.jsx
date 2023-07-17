@@ -1,4 +1,4 @@
-import Context from "../utils/context";
+import Context from "../../utils/context";
 import React, { useEffect, useState } from "react";
 const ProgressBar = ({text}) => {
   const { state, dispatch } = React.useContext(Context);

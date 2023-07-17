@@ -1,8 +1,8 @@
 import React from "react";
 
-import Dashboard from "./pages/dashboard";
-import Context from "../utils/context";
-import Login from "./pages/Login";
+import Dashboard from "../components/pages/dashboard";
+import Context from "./context";
+import Login from "../components/pages/Login";
 
 const Store = () => {
   const { state, dispatch } = React.useContext(Context)

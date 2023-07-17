@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import Section from "./Section";
-import Context from "../utils/context";
-import { fetchTasks } from "../utils/lib";
+import Context from "../../utils/context";
+import { fetchTasks } from "../../utils/lib";
 
 const ListTasks = () => {
   const [todos, setTodos] = useState([]);

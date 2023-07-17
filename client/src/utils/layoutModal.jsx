@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Sidebar from "./sidebar";
-import ProfileSidebar from "./profileSidebar";
-import Navbarr from "./navbar/navbar";
+import Sidebar from "../components/sidebar/sidebar";
+import ProfileSidebar from "../components/sidebar/profileSidebar";
+import Navbarr from "../components/navbar/navbar";
 import { useContext } from "react";
-import Context from "../utils/context";
+import Context from "./context";
 import checkedIcon from "../assets/checked.svg";
 
 function LayoutM({ children }) {

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { saveTask } from "../utils/lib";
+import { saveTask } from "../../utils/lib";
 import TaskForm from "./TaskForm";
-import Context from "../utils/context";
+import Context from "../../utils/context";
 
 const CreateTask = ({text}) => {
   const [showModal, setShowModal] = useState(false); // Initially hide the modal

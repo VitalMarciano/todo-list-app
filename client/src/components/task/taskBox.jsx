@@ -2,8 +2,8 @@ import { useDrag } from "react-dnd";
 import React, { useState, useContext } from "react";
 import toast from "react-hot-toast";
 import TaskForm from "./TaskForm";
-import Context from "../utils/context";
-import updateTask from "../utils/lib";
+import Context from "../../utils/context";
+import updateTask from "../../utils/lib";
 
 const Task = ({ task }) => {
   const [isEditing, setIsEditing] = useState(false);

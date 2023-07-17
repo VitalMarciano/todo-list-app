@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
-import CreateTask from "../CreateTask";
-import ListTasks from "../ListTasks";
+import CreateTask from "../task/CreateTask";
+import ListTasks from "../task/ListTasks";
 import Context from "../../utils/context";
 
 
