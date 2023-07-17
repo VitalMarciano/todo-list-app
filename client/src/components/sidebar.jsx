@@ -65,7 +65,7 @@ export default function Sidebar() {
             </div>
             <div className="flex-1">
               <ul className="pt-2 pb-4 space-y-3 text-md">
-              <li className="rounded-sm my-7">
+              <li className="rounded-sm my-7 ">
                 <CreateTask text={"Add Task"}></CreateTask>
                 </li>
                 <li className="rounded-sm">
