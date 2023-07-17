@@ -99,3 +99,5 @@ export const saveTask = async (task, state, dispatch) => {
     
 };
 
+
+export default updateTask;
