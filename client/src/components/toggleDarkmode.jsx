@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import Context from "../utils/context";
+
 const Darkmode = () => {
   const { state, dispatch } = React.useContext(Context);
   const toggleDarkMode = () => {
