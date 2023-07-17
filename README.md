@@ -76,7 +76,6 @@ npm install
 Start the server:
 ```
 bash
-Copy code
 cd server
 npm start
 ```
@@ -84,7 +83,6 @@ npm start
 Start the client (in a separate terminal):
 ```
 bash
-Copy code
 cd client
 npm run dev
 ```
