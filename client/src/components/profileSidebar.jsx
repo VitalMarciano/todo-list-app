@@ -23,7 +23,7 @@ export default function Sidebarr() {
       />
       )}
       <div
-        className={`flex  right-2 fixed z-0 duration-200 ease-in-oute w-72 flex-col ${
+        className={`flex  right-2 fixed z-50 duration-200 ease-in-oute w-72 flex-col ${
           showSidebar ? "-translate-x-0" : " translate-x-full  overflow-hidden"
         }`}
       >
@@ -50,7 +50,6 @@ export default function Sidebarr() {
                  <li><ProgressBar text={"Task status"}></ProgressBar></li> 
                  <li> <Darkmode></Darkmode></li>
               </ul>
-              
             </div>
           </div>
         </div>
