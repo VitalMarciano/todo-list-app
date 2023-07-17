@@ -1,10 +1,6 @@
 # todo-list-app
 
 Todoapp Screenshot ![image](https://github.com/VitalMarciano/todo-list-app/assets/74130524/38c40d7d-79d0-4649-802d-b45d1a783336)
-Task Screenshot![image](https://github.com/VitalMarciano/todo-list-app/assets/74130524/6a23117d-2126-4a0c-9bc5-d37109a00bf4)
-Search ScreenShot ![image](https://github.com/VitalMarciano/todo-list-app/assets/74130524/af2c4e86-84ba-44a7-a8ca-d23225ec3c1f)
-
-
 
 ## Table of Contents
 
@@ -20,7 +16,15 @@ Search ScreenShot ![image](https://github.com/VitalMarciano/todo-list-app/assets
 ## Introduction
 Todoapp is a task management application that allows users to organize and track their tasks efficiently. Users can set task priorities, add labels for classification, and collaborate with others by assigning tasks. The app also features a dark mode for better user experience and allows users to delete, edit, and mark tasks as completed. Additionally, it enables filtering tasks based on labels, sending email notifications, and tracking task completion progress across all tasks.
 
-Todoapp Overview GIF <!-- Add a GIF or short video showcasing your app -->
+Todoapp Overview 
+Drag and drop ![image](https://github.com/VitalMarciano/todo-list-app/assets/74130524/1687d4c1-a764-48cf-a5df-66efcae84a0b)
+Task Screenshot![image](https://github.com/VitalMarciano/todo-list-app/assets/74130524/6a23117d-2126-4a0c-9bc5-d37109a00bf4)
+Search ScreenShot ![image](https://github.com/VitalMarciano/todo-list-app/assets/74130524/af2c4e86-84ba-44a7-a8ca-d23225ec3c1f)
+mobile preview 
+
+https://github.com/VitalMarciano/todo-list-app/assets/74130524/07d06adb-4573-454a-ad1a-58d5ee610611
+
+
 
 ## Features
 ### User Management:
